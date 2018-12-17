@@ -1,3 +1,36 @@
+@model User
+
+<head>
+    <title>Edit User</title>
+<style>
+.inline{
+        display: inline-block; text-align:left;
+
+}
+</style>
+</head>
+<header>
+
+    <div class= "header">
+        <partial name="HeadingPartial"/>
+    </div>
+</header>
+<body>
+    <nav>
+        <a>Home |</a>
+        <a href="/edit">Edit User Profile |</a>
+        <a href="/NewIdea">New Idea |</a>
+        <a href="/AllIdeas">Ideas in your que |</a>
+        <a href="/review">Review ideas</a>
+        <a href="/Logout">Logout</a>
+    </nav>
+
+
+
+
+
+
+
 <style>
 </style>
 <h4>Submitted Ideas</h4>
@@ -5,7 +38,7 @@
     <a href="idea/@idea.id">@idea.name</a>
 }
 <h4>Ideas needing approval</h4>
-@foreach(review in ViewBag.review){
+@foreach(var review in ViewBag.review){
     <a href="idea/@review.id">@review.name</a>
 }
 
