@@ -1,0 +1,83 @@
+@model User
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<title>Login or Register</title>
+<style>
+.registration{
+    display:inline-block;
+    text-align:left;
+    height:400px;
+    width:400px;
+    margin-left:100px;
+}
+
+.block{
+    display:block;
+}
+.inputbox{
+    width:250px;
+}
+
+.image{
+    display:inline-block;
+    vertical-align: top;
+    margin-top:22%;
+    margin-left:21%;
+}
+.body{
+    background-color:grey;
+    height:110%;
+    Width:100%;
+}
+</style>
+</head>
+<body class="body">
+    <div >
+        @Html.Partial("loginUser")
+        <div class=registration>
+            <h2>Login and Registration</h2><br>
+            <h4>Register here!</h4>
+
+            <form  asp-action="register" asp-controller="User" method="post">
+                <br><span></span>
+                <label asp-for="fname"></label>
+                <br>
+                <input  class =inputbox type="text" asp-for="fname">
+                <br>
+                <span asp-validation-for="fname"></span>
+                <br>
+                <label asp-for="lname"></label>
+                <br>
+                <input  class =inputbox type="text" asp-for="lname">
+                <br>
+                <span asp-validation-for="lname"></span>
+                <br>
+                <label asp-for="email" ></label>
+                <br>
+                <input  class =inputbox type="text" asp-for="email">
+                <br>
+                <span asp-validation-for="email"></span>
+                <br>
+                <label asp-for="password" ></label><br>
+                <input  class =inputbox type="password" asp-for="password">
+                <br>
+                <span asp-validation-for="password"></span>
+                <br>
+                <label asp-for="confirm_password"></label><br>
+                <input  class =inputbox type="password" asp-for="confirm_password">
+                <br>
+                <br>
+                <input type="submit" value="Register"><br>
+                </form>
+            </div>
+        <div class="image">
+            <img src="~images/MessageBoard">
+        </div>
+    </div>
+    </body>
+</html>

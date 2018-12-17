@@ -1,0 +1,59 @@
+@model User
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit User</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<style>
+.inline{
+        display: inline-block; text-align:left;
+
+}
+
+</style>
+</head>
+<body>
+                <div class="col-md-4 mb-3">
+                    
+                    <h1 class="inline">Edit User</h1>
+                    <button href="/weddings">Home</button>
+                    <form  asp-action="update" asp-Controller="Users" method="post">
+            <br><span></span>
+            <label asp-for="fname"></label>
+            <br>
+            <input  class =inputbox type="text" asp-for="fname">
+            <br>
+            <span asp-validation-for="fname"></span>
+            <br>
+            <label asp-for="lname"></label>
+            <br>
+            <input  class =inputbox type="text" asp-for="lname">
+            <br>
+            <span asp-validation-for="lname"></span>
+            <br>
+            <label asp-for="email" ></label>
+            <br>
+            <input  class =inputbox type="text" asp-for="email">
+            <br>
+            <span asp-validation-for="email"></span>
+            <br>
+            <label asp-for="password" ></label><br>
+            <input  class =inputbox type="password" asp-for="password">
+            <br>
+            <span asp-validation-for="password"></span>
+            <br>
+            <label asp-for="confirm_password"></label><br>
+            <input  class =inputbox type="password" asp-for="confirm_password">
+            <br>
+            <input asp-for="UserId" type ="hidden" >
+            <br>
+            <input type="submit" value="Update"><br>
+            </form>
+                </div>
+                
+                
+            </body>
+            </html>

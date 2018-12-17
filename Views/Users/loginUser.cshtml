@@ -1,0 +1,62 @@
+@model LoginUser
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<title>Login or Register</title>
+<style>
+    /* Header Styling Starts+++++++++++++++++++++++++++++++++++ */
+
+.logo{
+    display:inline-block;
+    margin-top: 4%;
+    margin-left: 5%;
+}
+.login{
+    display:inline-block;
+    text-align: left;
+    height:400px;
+    margin-left:23%;
+    vertical-align: top;
+
+}
+.inputbox{
+    width:250px;
+    display:inline-block;
+}
+header{
+    width:100%;
+    height:100px;
+    background-color:lightslategray;
+}
+.inline{
+    display:inline-block;
+}
+.email{
+    margin-left:80px;
+}
+.password{
+    margin-left:220px;
+}
+   /* Header Styling Ends+++++++++++++++++++++++++++++++++++ */
+</style>
+
+    <header>
+        <h4 class="logo"></h4>
+        <div class="login">
+            <form asp-action="login" asp-controller="User" method="post">
+                <br>
+                <label class="email" asp-for="Email"></label>
+                <label class="password" asp-for="Password"></label>
+                <br>
+                <h4 class="inline">Login here!</h4>
+                <input  class ="inputbox" type="text" asp-for="Email">
+                <input  class ="inputbox" type="password" asp-for="Password">
+                <input  type="submit" value="Login">
+                <br>
+                <span asp-validation-for="Email"></span>
+                <span asp-validation-for="Password"></span>
+
+            </form>
+        </div>
+    </header>   
