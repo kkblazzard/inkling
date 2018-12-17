@@ -1,2 +1,12 @@
 <style>
 </style>
+<h4>Submitted Ideas</h4>
+@foreach(var idea in Model){
+    <a href="idea/@idea.id">@idea.name</a>
+}
+<h4>Ideas needing approval</h4>
+@foreach(review in ViewBag.review){
+    <a href="idea/@review.id">@review.name</a>
+}
+
+<a href="idea/form">Submit a new idea</a>
