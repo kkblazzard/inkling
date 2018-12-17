@@ -4,6 +4,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
+using inkling.Models;
 
 namespace inkling
 {
@@ -18,6 +20,7 @@ namespace inkling
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+            services.AddDbContext<InklingContext>(options => options.UseMySql(Configuration["DBInfo:ConnectionString"]));
             services.AddMvc();
             services.AddSession();
         }
