@@ -153,7 +153,7 @@ namespace inkling.Controllers
                 return RedirectToAction("Index");
             }
                 
-            return Redirect("/wall");
+            return View("profile");
         }
 
         [HttpGet]
