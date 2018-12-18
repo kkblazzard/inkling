@@ -1,61 +1,7 @@
 @model LoginUser
-<head>
+
     <title>Login or Register</title>
-    <style>
-        /* Header Styling Starts+++++++++++++++++++++++++++++++++++ */
-
-    .logo{
-        display:inline-block;
-        margin-top: 1%;
-        height:85%;
-        width:10%;
-    }
-    .login{
-        display:inline-block;
-        text-align: left;
-        height:400px;
-        margin-left:20%;
-        vertical-align: top;
-
-    }
-    .inputbox{
-        width:250px;
-        display:inline-block;
-    }
-    .header{
-        width:100%;
-        height:100px;
-        background-color:rgb(255, 255, 255);
-    }
-    .inline{
-        display:inline-block;
-    }
-    .email{
-        margin-left:80px;
-    }
-    .password{
-        margin-left:220px;
-    }
-    /* Header Styling Ends+++++++++++++++++++++++++++++++++++ */
-    </style>
-</head>
-<header>
-    <div class= "header">
-        <partial name="HeadingPartial"/>
-    </div>
-</header>
-<body>
-    
-    <nav>
-        <a href="/">Home |</a>
-        <a>Edit User Profile |</a>
-        <a href="/NewIdea">New Idea |</a>
-        <a href="/AllIdeas">Ideas in your que |</a>
-        <a href="/review">Review ideas</a>
-        <a href="/Logout">Logout</a>
-    </nav>
-
-    <img class="logo" src="images/InklingLogo.jpg">
+    <link rel="stylesheet" type="text/css" media="screen" href="~/css/User/LoginUser.css"/>
     <div class="login">
         <form asp-action="login" asp-controller="User" method="post">
             <br>
@@ -69,10 +15,5 @@
             <br>
             <span asp-validation-for="Email"></span>
             <span asp-validation-for="Password"></span>
-
         </form>
     </div>
-
-
-
-</body>
