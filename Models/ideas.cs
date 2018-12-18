@@ -26,6 +26,7 @@ namespace inkling.Models
         public List<Department> Department{get; set;}
         public List<Message> message{get; set;}
         public List<User> User{get; set;}
+        public List<Results> Results{get; set;}
         public int EddId {get; set;}
         
         public DateTime created_at {get; set;}=DateTime.Now;
