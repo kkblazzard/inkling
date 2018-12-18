@@ -18,6 +18,7 @@ namespace inkling.Models
     
         [Required] // marks it as a required field
         public int UserId {get; set;}
+        public Idea Idea {get; set;}
         
         public List <Idea> idea {get; set;}
         
