@@ -9,8 +9,8 @@ using inkling.Models;
 namespace inkling.Migrations
 {
     [DbContext(typeof(InklingContext))]
-    [Migration("20181218192337_2migration")]
-    partial class _2migration
+    [Migration("20181218231633_2Migration")]
+    partial class _2Migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -84,7 +84,9 @@ namespace inkling.Migrations
                     b.Property<int>("IdeaId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("ApproverId");
+                    b.Property<int>("ApproverId");
+
+                    b.Property<int>("CreatorId");
 
                     b.Property<int>("EddId");
 
@@ -139,6 +141,10 @@ namespace inkling.Migrations
 
                     b.Property<DateTime>("created_at");
 
+                    b.Property<string>("extra");
+
+                    b.Property<string>("extra2");
+
                     b.Property<string>("result")
                         .IsRequired();
 
@@ -158,9 +164,13 @@ namespace inkling.Migrations
 
                     b.Property<int?>("ApproverId");
 
+                    b.Property<int>("ApproverUserId");
+
                     b.Property<int?>("IdeaId");
 
                     b.Property<DateTime>("created_at");
+
+                    b.Property<int>("departId");
 
                     b.Property<string>("email")
                         .IsRequired();
@@ -173,8 +183,6 @@ namespace inkling.Migrations
 
                     b.Property<string>("password")
                         .IsRequired();
-
-                    b.Property<int>("rank");
 
                     b.Property<DateTime>("updated_at");
 
@@ -204,7 +212,8 @@ namespace inkling.Migrations
                 {
                     b.HasOne("inkling.Models.Approver")
                         .WithMany("idea")
-                        .HasForeignKey("ApproverId");
+                        .HasForeignKey("ApproverId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("inkling.Models.Message", b =>
