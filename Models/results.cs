@@ -1,39 +1,28 @@
 
-// using System;
-// using System.Collections.Generic;
-// using System.ComponentModel.DataAnnotations;
-// using System.ComponentModel.DataAnnotations.Schema;
-// using System.IO;
-// using System.Threading;
-// using System.Threading.Tasks;
-// using Microsoft.AspNetCore.Http;
-// using Microsoft.AspNetCore.Identity;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-// namespace inkling.Models
+namespace inkling.Models
 
-// {
-// public interface IFormFile
-// {
-//     string ContentType { get; }
-//     string ContentDisposition { get; }
-//     IHeaderDictionary Headers { get; }
-//     long Length { get; }
-//     string Name { get; }
-//     string FileName { get; }
-//     Stream OpenReadStream();
-//     void CopyTo(Stream target);
-//     Task CopyToAsync(Stream target, CancellationToken cancellationToken = null);
-// }
+{
+    public class Results
+    {
+        [Key]
+        public int ResultId {get; set;}
+        [Display(Name="Message:")] //display name for forms
+        [Required] // marks it as a required field
+        [MinLength  (3)]
+        public string result {get; set;}
+    
+        public Idea Idea {get; set;}
+        
+        public List <Idea> idea {get; set;}
+        
+        public DateTime created_at {get; set;}=DateTime.Now;
+        public DateTime updated_at {get; set;}=DateTime.Now;
 
-// public class ApplicationUser : IdentityUser
-// {
-//     public byte[] AvatarImage { get; set; }
-// }
-
-// public class RegisterViewModel
-// {
-//     // other properties omitted
-
-//     public IFormFile AvatarImage { get; set; }
-// }
-// }
+        
+    }
+}
