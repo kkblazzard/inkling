@@ -36,7 +36,7 @@ namespace inkling.Models
         public DateTime created_at {get; set;}=DateTime.Now;
         public DateTime updated_at {get; set;}=DateTime.Now;
         
-        
+        public int DepartmentId {get; set;}
 
         [NotMapped] //none mapped(not savedin database) entries needed for compaire validation to prevent user error
         [Display(Name="Confirm Password")]

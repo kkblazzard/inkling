@@ -18,9 +18,9 @@ namespace inkling.Models
     
         [Required] // marks it as a required field
         public int UserId {get; set;}
+        public User Creator {get; set;}
+        public int IdeaId {get; set;}
         public Idea Idea {get; set;}
-        
-        public List <Idea> idea {get; set;}
         
         public DateTime created_at {get; set;}=DateTime.Now;
         public DateTime updated_at {get; set;}=DateTime.Now;

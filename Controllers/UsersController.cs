@@ -152,7 +152,7 @@ namespace inkling.Controllers
             {   HttpContext.Session.SetString("login","False");
                 return RedirectToAction("Index");
             }
-                
+            
             return View("profile");
         }
 

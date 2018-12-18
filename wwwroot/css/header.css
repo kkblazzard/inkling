@@ -3,7 +3,7 @@
 
 }
 
- img{
+.img{
     height: 200px;
 }
 .Hquote{
@@ -15,13 +15,13 @@
     font-size: x-large;
     padding: 7px 20px 0px 0px;
 }
-nav {
+.nav {
     background-color: #080762;
     padding: 0px 0px 7px 20px;
 
 
 }
-nav a{
+.nav a{
     color: white;
     font-weight: bolder;
     font-family: sans-serif;
