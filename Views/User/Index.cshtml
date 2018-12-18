@@ -13,7 +13,9 @@
 </head>
 <header>
     <div class= "header">
+        <partial name="loginUser"/>
         <partial name="HeadingPartial"/>
+        
     </div>
 </header>
 <body class="body">
@@ -27,29 +29,49 @@
                 <br><span></span>
                 <label asp-for="fname"></label>
                 <br>
-                <input  class =inputbox type="text" asp-for="fname">
+                <input  class="inputbox" type="text" asp-for="fname">
                 <br>
                 <span asp-validation-for="fname"></span>
                 <br>
                 <label asp-for="lname"></label>
                 <br>
-                <input  class =inputbox type="text" asp-for="lname">
+                <input  class ="inputbox" type="text" asp-for="lname">
                 <br>
                 <span asp-validation-for="lname"></span>
                 <br>
                 <label asp-for="email" ></label>
                 <br>
-                <input  class =inputbox type="text" asp-for="email">
+                <input  class ="inputbox" type="text" asp-for="email">
                 <br>
                 <span asp-validation-for="email"></span>
                 <br>
                 <label asp-for="password" ></label><br>
-                <input  class =inputbox type="password" asp-for="password">
+                <input  class ="inputbox" type="password" asp-for="password">
                 <br>
                 <span asp-validation-for="password"></span>
                 <br>
-                <label asp-for="confirm_password"></label><br>
-                <input  class =inputbox type="password" asp-for="confirm_password">
+                <label asp-for="confirm_password"></label>
+                <br>
+                <input  class ="inputbox" type="password" asp-for="confirm_password">
+                <br>
+                <label asp-for="department"></label>
+                <br>
+                <select class="inputbox" asp-for="department">
+                    <option value="0">Customer Service</option>
+                    <option value="1">DevOps</option>
+                    <option value="2">Marketing/Sales</option>
+                </select>
+                <br>
+                <label asp-for="ApproverId"></label>
+                <br>
+                <select class="inputbox" asp-for="Rank">
+                    <option value="5">Employee</option>
+                    <option value="4">Supervisor</option>
+                    <option value="3">Manager</option>
+                    <option value="2">Director</option>
+                    <option value="1">VP</option>
+                    <option value="0">C</option>
+                </select>
                 <br>
                 <br>
                 <input type="submit" value="Register"><br>

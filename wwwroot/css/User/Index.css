@@ -1,20 +1,23 @@
 /*++++++++++++++ Header ++++++++++++++++*/
-.header{
+header{
     display: inline;
 
 }
-.nav {
+nav {
     background-color: #080762;
     padding: 0px 0px 7px 20px;
 
 
 }
-.nav a{
+nav a{
     color: white;
     font-weight: bolder;
     font-family: sans-serif;
     text-decoration-color: white;
     text-decoration: none;
+}
+.img{
+    margin-top: -188px;
 }
 /* ++++++++++++End Header +++++++++++++++++++ */
 
