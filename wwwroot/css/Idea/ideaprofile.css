@@ -1,0 +1,17 @@
+header{
+    display: inline;
+
+}
+nav {
+    background-color: #080762;
+    padding: 0px 0px 7px 20px;
+
+
+}
+nav a{
+    color: white;
+    font-weight: bolder;
+    font-family: sans-serif;
+    text-decoration-color: white;
+    text-decoration: none;
+}
