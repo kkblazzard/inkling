@@ -32,11 +32,12 @@ namespace inkling.Models
         [MinLength (8, ErrorMessage ="Password must be 8 characters or longer!")]
     
         public string  password {get; set;}
-        public int rank {get; set;}
+        [Display(Name="Title:")]
+        public int ApproverId {get;set;}
         public DateTime created_at {get; set;}=DateTime.Now;
         public DateTime updated_at {get; set;}=DateTime.Now;
-        
-        public int DepartmentId {get; set;}
+        [Display(Name="Department:")]
+        public int Rank {get; set;}
 
         [NotMapped] //none mapped(not savedin database) entries needed for compaire validation to prevent user error
         [Display(Name="Confirm Password")]
