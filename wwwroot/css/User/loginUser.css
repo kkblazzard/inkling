@@ -1,0 +1,18 @@
+.login{
+    display: inline-block;
+    text-align: left;
+    height: 83px;
+    margin-left: 19%;
+    vertical-align: bottom;
+
+}
+.inputbox{
+    width:250px;
+    display:inline-block;
+}
+.email{
+    margin-left:80px;
+}
+.password{
+    margin-left:220px;
+}

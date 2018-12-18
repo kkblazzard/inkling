@@ -153,7 +153,8 @@ namespace inkling.Controllers
                 return RedirectToAction("Index");
             }
             List<Idea> submittedIdeas = dbContext.Ideas.Where(i=>i.CreatorId==HttpContext.Session.GetInt32("id")).ToList();
-            return View("profile");
+            ViewBag.review=dbContext.Ideas.Where(i=>i.ApproverId==HttpContext.Session.GetInt32("id")).ToList();
+            return View("profile", submittedIdeas);
         }
 
         [HttpGet]
