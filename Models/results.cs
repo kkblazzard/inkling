@@ -15,7 +15,9 @@ namespace inkling.Models
         [Required] // marks it as a required field
         [MinLength  (3)]
         public string result {get; set;}
-         public Edd EddId {get; set;}
+        public Edd EddId {get; set;}
+        public string extra {get; set;}
+        public string extra2 {get; set;}
         
         public DateTime created_at {get; set;}=DateTime.Now;
         public DateTime updated_at {get; set;}=DateTime.Now;

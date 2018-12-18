@@ -19,10 +19,10 @@ namespace inkling.Models
         [Required] // marks it as a required field
         [MinLength (3)]
 
-        public string desc{get; set;}
+        public string desc {get; set;}
         [Display(Name="Department:")] //display name for forms
         [Required] // marks it as a required field
-
+        public int ApproverId {get; set;}
         public List<Department> Department{get; set;}
         public List<Message> message{get; set;}
         public List<User> User{get; set;}
