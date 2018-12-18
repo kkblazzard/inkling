@@ -1,12 +1,51 @@
 @model LoginUser
+<head>
+    <title>Login or Register</title>
+    <style>
+        /* Header Styling Starts+++++++++++++++++++++++++++++++++++ */
 
+    .logo{
+        display:inline-block;
+        margin-top: 1%;
+        height:85%;
+        width:10%;
+    }
+    .login{
+        display:inline-block;
+        text-align: left;
+        height:400px;
+        margin-left:20%;
+        vertical-align: top;
+
+    }
+    .inputbox{
+        width:250px;
+        display:inline-block;
+    }
+    .header{
+        width:100%;
+        height:100px;
+        background-color:rgb(255, 255, 255);
+    }
+    .inline{
+        display:inline-block;
+    }
+    .email{
+        margin-left:80px;
+    }
+    .password{
+        margin-left:220px;
+    }
+    /* Header Styling Ends+++++++++++++++++++++++++++++++++++ */
+    </style>
+</head>
 <header>
-
     <div class= "header">
         <partial name="HeadingPartial"/>
     </div>
 </header>
 <body>
+    
     <nav>
         <a href="/">Home |</a>
         <a>Edit User Profile |</a>
@@ -15,62 +54,25 @@
         <a href="/review">Review ideas</a>
         <a href="/Logout">Logout</a>
     </nav>
-    
-<title>Login or Register</title>
-<style>
-    /* Header Styling Starts+++++++++++++++++++++++++++++++++++ */
 
-.logo{
-    display:inline-block;
-    margin-top: 1%;
-    height:85%;
-    width:10%;
-}
-.login{
-    display:inline-block;
-    text-align: left;
-    height:400px;
-    margin-left:20%;
-    vertical-align: top;
+    <img class="logo" src="images/InklingLogo.jpg">
+    <div class="login">
+        <form asp-action="login" asp-controller="User" method="post">
+            <br>
+            <label class="email" asp-for="Email"></label>
+            <label class="password" asp-for="Password"></label>
+            <br>
+            <h4 class="inline">Login here!</h4>
+            <input  class ="inputbox" type="text" asp-for="Email">
+            <input  class ="inputbox" type="password" asp-for="Password">
+            <input  type="submit" value="Login">
+            <br>
+            <span asp-validation-for="Email"></span>
+            <span asp-validation-for="Password"></span>
 
-}
-.inputbox{
-    width:250px;
-    display:inline-block;
-}
-.header{
-    width:100%;
-    height:100px;
-    background-color:rgb(255, 255, 255);
-}
-.inline{
-    display:inline-block;
-}
-.email{
-    margin-left:80px;
-}
-.password{
-    margin-left:220px;
-}
-   /* Header Styling Ends+++++++++++++++++++++++++++++++++++ */
-</style>
+        </form>
+    </div>
 
-    <header class="header">
-        <img class="logo" src="images/InklingLogo.jpg">
-        <div class="login">
-            <form asp-action="login" asp-controller="User" method="post">
-                <br>
-                <label class="email" asp-for="Email"></label>
-                <label class="password" asp-for="Password"></label>
-                <br>
-                <h4 class="inline">Login here!</h4>
-                <input  class ="inputbox" type="text" asp-for="Email">
-                <input  class ="inputbox" type="password" asp-for="Password">
-                <input  type="submit" value="Login">
-                <br>
-                <span asp-validation-for="Email"></span>
-                <span asp-validation-for="Password"></span>
 
-            </form>
-        </div>
-    </header>   
+
+</body>

@@ -2,15 +2,13 @@
 
 <head>
     <title>Edit User</title>
-<style>
-.inline{
-        display: inline-block; text-align:left;
-
-}
-</style>
+    <style>
+    .inline{
+            display: inline-block; text-align:left;
+    }
+    </style>
 </head>
 <header>
-
     <div class= "header">
         <partial name="HeadingPartial"/>
     </div>
@@ -26,20 +24,15 @@
     </nav>
 
 
+    <h4>Submitted Ideas</h4>
+    @foreach(var idea in Model)
+    {
+        <a href="idea/@idea.id">@idea.name</a>
+    }
+    <h4>Ideas needing approval</h4>
+    @foreach(var review in ViewBag.review){
+        <a href="idea/@review.id">@review.name</a>
+    }
 
-
-
-
-
-<style>
-</style>
-<h4>Submitted Ideas</h4>
-@foreach(var idea in Model){
-    <a href="idea/@idea.id">@idea.name</a>
-}
-<h4>Ideas needing approval</h4>
-@foreach(var review in ViewBag.review){
-    <a href="idea/@review.id">@review.name</a>
-}
-
-<a href="idea/form">Submit a new idea</a>
+    <a href="idea/form">Submit a new idea</a>
+</body>
