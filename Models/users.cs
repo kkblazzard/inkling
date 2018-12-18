@@ -30,9 +30,12 @@ namespace inkling.Models
         [DataType(DataType.Password)] //marks it as a password data type for varification
         [Required] // marks it as a required field
         [MinLength (8, ErrorMessage ="Password must be 8 characters or longer!")]
+    
         public string  password {get; set;}
+        public int rank {get; set;}
         public DateTime created_at {get; set;}=DateTime.Now;
         public DateTime updated_at {get; set;}=DateTime.Now;
+        
         
 
         [NotMapped] //none mapped(not savedin database) entries needed for compaire validation to prevent user error
@@ -41,6 +44,7 @@ namespace inkling.Models
         [Required] // marks it as a required field
         [DataType(DataType.Password)]
         public string confirm_password {get; set;}
+        public List<Department> department {get; set;}
 
         
     }
