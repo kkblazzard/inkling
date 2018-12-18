@@ -53,6 +53,7 @@ namespace inkling.Controllers
                 dbContext.SaveChanges();
                 System.Console.WriteLine("created new user sending to dashboard page++++++++++++++");
                 HttpContext.Session.SetString("Login", "True");
+                ViewBag.login=HttpContext.Session.GetString("Login");
                 User user = dbContext.Users.FirstOrDefault(u => u.email == used.email);
                 HttpContext.Session.SetInt32("id",user.UserId);
                 HttpContext.Session.SetString("fname",user.fname);
@@ -100,6 +101,7 @@ namespace inkling.Controllers
             System.Console.WriteLine(id);
             System.Console.WriteLine("++++++++++++++++++++++++++++++SessionExtensions id+++++++++++++++++++++++++++");
             HttpContext.Session.SetString("Login", "True");
+            ViewBag.login=HttpContext.Session.GetString("Login");
             return RedirectToAction("Dashboard");
         }
         return View("Index");
@@ -113,7 +115,7 @@ namespace inkling.Controllers
             {
                 return RedirectToAction("Index");
             }
-            
+            ViewBag.login=HttpContext.Session.GetString("Login");
             int id=(int)HttpContext.Session.GetInt32("id");
             user.UserId=id;
             System.Console.WriteLine(user.UserId);
@@ -131,7 +133,7 @@ namespace inkling.Controllers
             update.UserId=id;
             dbContext.Users.Update(update);
             dbContext.SaveChanges(); //saves submitted updates to database
-            
+            ViewBag.login=HttpContext.Session.GetString("Login");
             return RedirectToAction("Dashboard"); //Redirect to loggedin page
         }
 
