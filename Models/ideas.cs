@@ -23,6 +23,7 @@ namespace inkling.Models
         [Display(Name="Department:")] //display name for forms
         [Required] // marks it as a required field
         public int ApproverId {get; set;}
+        public int CreatorId {get; set;}
         public List<Department> Department{get; set;}
         public List<Message> message{get; set;}
         public List<User> User{get; set;}
