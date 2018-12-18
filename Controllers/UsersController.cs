@@ -51,13 +51,13 @@ namespace inkling.Controllers
                 dbContext.Add(used);
                 System.Console.WriteLine("Password Hashed saving to DB++++++++++++++");
                 dbContext.SaveChanges();
-                System.Console.WriteLine("created new user sending to success page++++++++++++++");
+                System.Console.WriteLine("created new user sending to dashboard page++++++++++++++");
                 HttpContext.Session.SetString("Login", "True");
                 User user = dbContext.Users.FirstOrDefault(u => u.email == used.email);
                 HttpContext.Session.SetInt32("id",user.UserId);
                 HttpContext.Session.SetString("fname",user.fname);
 
-                return RedirectToAction("Success");
+                return RedirectToAction("Dashboard");
             }
             System.Console.WriteLine("modelstate is valid failed++++++++++++++++++++++++++++++++++++++++");
             return View("Index");
@@ -100,7 +100,7 @@ namespace inkling.Controllers
             System.Console.WriteLine(id);
             System.Console.WriteLine("++++++++++++++++++++++++++++++SessionExtensions id+++++++++++++++++++++++++++");
             HttpContext.Session.SetString("Login", "True");
-            return RedirectToAction("Success");
+            return RedirectToAction("Dashboard");
         }
         return View("Index");
     }
@@ -132,7 +132,7 @@ namespace inkling.Controllers
             dbContext.Users.Update(update);
             dbContext.SaveChanges(); //saves submitted updates to database
             
-            return RedirectToAction("Success"); //Redirect to loggedin page
+            return RedirectToAction("Dashboard"); //Redirect to loggedin page
         }
 
         [HttpGet]
@@ -145,8 +145,8 @@ namespace inkling.Controllers
 
 
         [HttpGet]
-        [Route("success")]
-        public IActionResult Success(int id)
+        [Route("dashboard")]
+        public IActionResult Dashboard(int id)
         { 
             if(HttpContext.Session.GetString("Login")==null || HttpContext.Session.GetString("Login")!="True")
             {   HttpContext.Session.SetString("login","False");
