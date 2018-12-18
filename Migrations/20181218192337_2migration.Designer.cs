@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using inkling.Models;
 
 namespace inkling.Migrations
 {
     [DbContext(typeof(InklingContext))]
-    partial class InklingContextModelSnapshot : ModelSnapshot
+    [Migration("20181218192337_2migration")]
+    partial class _2migration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
