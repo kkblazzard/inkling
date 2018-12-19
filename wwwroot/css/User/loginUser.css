@@ -1,9 +1,8 @@
 .login{
     display: inline-block;
     text-align: left;
-    height: 100px;
-    margin-left: 45%;
-    margin-top:88px;
+    height: 59px;
+    margin-left: 38%;
     vertical-align: bottom;
 
 }
@@ -16,4 +15,7 @@
 }
 .password{
     margin-left:220px;
+}
+h4{
+    display:inline-block;
 }
