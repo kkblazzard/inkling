@@ -1,6 +1,26 @@
+@model Idea
 <head>
     <link rel="stylesheet" type="text/css" media="screen" href="~/css/Idea/newidea.css"/>
 </head>
 <header> 
         <partial name="HeadingPartial"/>
 </header>
+
+<h2>Idea Submission</h2>
+<Form>
+<label asp-for="name"></label>
+<input asp-for="name">
+<label asp-for="desc"></label>
+<h6>"What problem will this solve</h6>
+<h6>Who will use this Customers or Employees?</h6>
+<textarea asp-for="desc"></textarea>
+@{
+    foreach(var a in ViewBag.approvers)
+        {
+            <input type="hidden" name="ApproverRank@a.Rank" value="@a.UserId">
+        }
+}
+<input type="hidden" asp-for="CreatorId"value="@ViewBag.id">
+
+
+</Form>

@@ -57,6 +57,8 @@ namespace inkling.Controllers
                 User user = dbContext.Users.FirstOrDefault(u => u.email == used.email);
                 HttpContext.Session.SetInt32("id",user.UserId);
                 HttpContext.Session.SetString("fname",user.fname);
+                HttpContext.Session.SetInt32("DepartId",user.departId);
+                HttpContext.Session.SetInt32("Rank",user.Rank);
 
                 return RedirectToAction("Dashboard");
             }
@@ -95,12 +97,10 @@ namespace inkling.Controllers
             User user = dbContext.Users.FirstOrDefault(u => u.email == userubmission.Email);
             HttpContext.Session.SetInt32("id",user.UserId);
             HttpContext.Session.SetString("fname",user.fname);
-            System.Console.WriteLine(user.UserId);
-            System.Console.WriteLine("++++++++++++++++++++user.userID++++++++++++++++++++++++++++++");
-            int id=(int)HttpContext.Session.GetInt32("id");
-            System.Console.WriteLine(id);
-            System.Console.WriteLine("++++++++++++++++++++++++++++++SessionExtensions id+++++++++++++++++++++++++++");
+            HttpContext.Session.SetInt32("departId",user.departId);
+            HttpContext.Session.SetInt32("rank",user.Rank);
             HttpContext.Session.SetString("Login", "True");
+            int id=(int)HttpContext.Session.GetInt32("id");
             ViewBag.login=HttpContext.Session.GetString("Login");
             return RedirectToAction("Dashboard");
         }
