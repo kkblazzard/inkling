@@ -1,5 +1,9 @@
 .img{
-    height: 200px;
+    height: 100px;
+    width: 100px;
+}
+h4{
+    margin-bottom:0px;
 }
 .Hquote{
     font-family: sans-serif;
