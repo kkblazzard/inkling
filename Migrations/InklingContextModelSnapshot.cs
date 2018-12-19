@@ -84,6 +84,18 @@ namespace inkling.Migrations
 
                     b.Property<int>("ApproverId");
 
+                    b.Property<int>("ApproverRank0");
+
+                    b.Property<int>("ApproverRank1");
+
+                    b.Property<int>("ApproverRank2");
+
+                    b.Property<int>("ApproverRank3");
+
+                    b.Property<int>("ApproverRank4");
+
+                    b.Property<int>("ApproverRank5");
+
                     b.Property<int>("CreatorId");
 
                     b.Property<int>("EddId");

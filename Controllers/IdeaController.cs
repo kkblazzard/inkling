@@ -30,7 +30,33 @@ namespace inkling.Controllers
             return View();
         }
 
+        [HttpGet]
+        [Route("idea/form")]
+        public IActionResult IdeaForm()
+        {
 
+
+
+            return View();
+        }
+        [HttpPost]
+        [Route("idea/form/process")]
+        public IActionResult IdeaFormProcess(Idea newIdea)
+        {   
+            dbContext.Ideas.Add(newIdea);
+            dbContext.SaveChanges();
+            int id=newIdea.IdeaId;
+
+            return Redirect($"/idea/{id}");
+        }
+        [HttpGet]
+        [Route("idea/{id}")]
+        public IActionResult IdeaFormProcess(int id)
+        {   
+            var anidea=dbContext.Ideas.FirstOrDefault(i=>i.IdeaId == id);
+
+            return View(anidea);
+        }
 
     }
 }

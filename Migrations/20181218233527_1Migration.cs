@@ -48,6 +48,12 @@ namespace inkling.Migrations
                     name = table.Column<string>(nullable: false),
                     desc = table.Column<string>(nullable: false),
                     ApproverId = table.Column<int>(nullable: false),
+                    ApproverRank0 = table.Column<int>(nullable: false),
+                    ApproverRank1 = table.Column<int>(nullable: false),
+                    ApproverRank2 = table.Column<int>(nullable: false),
+                    ApproverRank3 = table.Column<int>(nullable: false),
+                    ApproverRank4 = table.Column<int>(nullable: false),
+                    ApproverRank5 = table.Column<int>(nullable: false),
                     CreatorId = table.Column<int>(nullable: false),
                     EddId = table.Column<int>(nullable: false),
                     created_at = table.Column<DateTime>(nullable: false),
@@ -98,10 +104,11 @@ namespace inkling.Migrations
                     lname = table.Column<string>(nullable: false),
                     email = table.Column<string>(nullable: false),
                     password = table.Column<string>(nullable: false),
-                    ApproverId = table.Column<int>(nullable: false),
+                    Rank = table.Column<int>(nullable: false),
                     created_at = table.Column<DateTime>(nullable: false),
                     updated_at = table.Column<DateTime>(nullable: false),
                     departId = table.Column<int>(nullable: false),
+                    ApproverId = table.Column<int>(nullable: true),
                     IdeaId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -112,7 +119,7 @@ namespace inkling.Migrations
                         column: x => x.ApproverId,
                         principalTable: "Approver",
                         principalColumn: "ApproverId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Users_Ideas_IdeaId",
                         column: x => x.IdeaId,
