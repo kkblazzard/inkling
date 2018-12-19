@@ -9,7 +9,7 @@ using inkling.Models;
 namespace inkling.Migrations
 {
     [DbContext(typeof(InklingContext))]
-    [Migration("20181218203835_3Migration")]
+    [Migration("20181218231807_3Migration")]
     partial class _3Migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -164,11 +164,13 @@ namespace inkling.Migrations
 
                     b.Property<int?>("ApproverId");
 
-                    b.Property<int>("DepartmentId");
-
                     b.Property<int?>("IdeaId");
 
+                    b.Property<int>("Rank");
+
                     b.Property<DateTime>("created_at");
+
+                    b.Property<int>("departId");
 
                     b.Property<string>("email")
                         .IsRequired();
@@ -181,8 +183,6 @@ namespace inkling.Migrations
 
                     b.Property<string>("password")
                         .IsRequired();
-
-                    b.Property<int>("rank");
 
                     b.Property<DateTime>("updated_at");
 

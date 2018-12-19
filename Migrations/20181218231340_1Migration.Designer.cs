@@ -9,8 +9,8 @@ using inkling.Models;
 namespace inkling.Migrations
 {
     [DbContext(typeof(InklingContext))]
-    [Migration("20181218204521_SecondMigration")]
-    partial class SecondMigration
+    [Migration("20181218231340_1Migration")]
+    partial class _1Migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -162,13 +162,13 @@ namespace inkling.Migrations
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("ApproverId");
-
-                    b.Property<int>("DepartmentId");
+                    b.Property<int>("ApproverId");
 
                     b.Property<int?>("IdeaId");
 
                     b.Property<DateTime>("created_at");
+
+                    b.Property<int>("departId");
 
                     b.Property<string>("email")
                         .IsRequired();
@@ -181,8 +181,6 @@ namespace inkling.Migrations
 
                     b.Property<string>("password")
                         .IsRequired();
-
-                    b.Property<int>("rank");
 
                     b.Property<DateTime>("updated_at");
 
@@ -240,7 +238,8 @@ namespace inkling.Migrations
                 {
                     b.HasOne("inkling.Models.Approver")
                         .WithMany("User")
-                        .HasForeignKey("ApproverId");
+                        .HasForeignKey("ApproverId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("inkling.Models.Idea")
                         .WithMany("User")
