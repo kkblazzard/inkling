@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace inkling.Migrations
 {
-    public partial class _1Migration : Migration
+    public partial class cMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

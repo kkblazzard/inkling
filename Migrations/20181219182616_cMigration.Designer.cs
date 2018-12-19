@@ -9,8 +9,8 @@ using inkling.Models;
 namespace inkling.Migrations
 {
     [DbContext(typeof(InklingContext))]
-    [Migration("20181218233527_1Migration")]
-    partial class _1Migration
+    [Migration("20181219182616_cMigration")]
+    partial class cMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

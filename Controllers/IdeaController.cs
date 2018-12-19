@@ -26,7 +26,6 @@ namespace inkling.Controllers
         {
 
 
-
             return View();
         }
 

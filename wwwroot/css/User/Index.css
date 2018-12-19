@@ -51,3 +51,10 @@ nav a{
     margin-top:20%;
     margin-left:5%;
 }
+
+.Group img{
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    margin-left:50%;
+}
