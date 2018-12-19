@@ -18,16 +18,24 @@
         <a href="/Logout">Logout</a>
     </nav>
 
-
-    <h4>Submitted Ideas</h4>
-    @foreach(var idea in Model)
-    {
-        <a href="idea/@idea.id">@idea.name</a>
-    }
-    <h4>Ideas needing approval</h4>
-    @foreach(var review in ViewBag.review){
-        <a href="idea/@review.id">@review.name</a>
-    }
-
-    <a href="idea/form">Submit a new idea</a>
+    <div class="left">
+        <h4>Submitted Ideas</h4>
+        <div class="scrollbox">
+            @foreach(var idea in Model)
+            {
+                <a href="idea/@idea.id">@idea.name</a>
+            }
+        </div>
+    </div>    
+    <div class="right">
+        <h4>Ideas needing approval</h4>
+        <div class="scrollbox">
+            @foreach(var review in ViewBag.review)
+            {
+                <a href="idea/@review.id">@review.name</a>
+            }
+        </div>
+    </div>
+    <br>
+    <h3 ><a class="new" href="idea/form">Submit a new idea</a></h3>
 </body>

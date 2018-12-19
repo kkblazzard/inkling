@@ -17,3 +17,20 @@ nav a{
     text-decoration: none;
 }
 /* ++++++++++++End Header +++++++++++++++++++ */
+.left{
+    display:inline-block;
+}
+.right{
+    margin-left:30%;
+    display:inline-block;
+}
+.scrollbox{
+    height:150px;
+    width:300px;
+    border:1px solid #ccc;
+    font:16px/26px Georgia, Garamond, Serif;overflow:auto;
+    display:inline-block;
+}
+.new{
+    margin-left:32%;
+}
