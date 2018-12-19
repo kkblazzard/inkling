@@ -15,3 +15,29 @@ nav a{
     text-decoration-color: white;
     text-decoration: none;
 }
+
+.DescBox{
+    display: inline-block;
+    height:150px;
+    width:300px;
+    border:1px solid #ccc;
+    font:16px/26px Georgia, Garamond, Serif;overflow:auto;
+    vertical-align: top;
+}
+
+.ApprList{
+    display: inline-block;
+    margin-left: 40%;
+
+}
+.MessageBox{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    background-color: #080762;
+    color: #ccc;
+    border:1px solid #ccc;
+
+
+}
