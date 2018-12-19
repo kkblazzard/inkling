@@ -57,5 +57,17 @@ namespace inkling.Controllers
             return View(anidea);
         }
 
+
+
+/////////////////////////////////////////////////////// GET EDD PAGE ///////////////////////
+
+        [HttpGet]
+        [Route("edd")]
+        public IActionResult Edd()
+        {
+
+
+            return View();
+        }
     }
 }
