@@ -9,8 +9,8 @@ using inkling.Models;
 namespace inkling.Migrations
 {
     [DbContext(typeof(InklingContext))]
-    [Migration("20181218231633_2Migration")]
-    partial class _2Migration
+    [Migration("20181219182616_cMigration")]
+    partial class cMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -85,6 +85,18 @@ namespace inkling.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("ApproverId");
+
+                    b.Property<int>("ApproverRank0");
+
+                    b.Property<int>("ApproverRank1");
+
+                    b.Property<int>("ApproverRank2");
+
+                    b.Property<int>("ApproverRank3");
+
+                    b.Property<int>("ApproverRank4");
+
+                    b.Property<int>("ApproverRank5");
 
                     b.Property<int>("CreatorId");
 
@@ -164,9 +176,9 @@ namespace inkling.Migrations
 
                     b.Property<int?>("ApproverId");
 
-                    b.Property<int>("ApproverUserId");
-
                     b.Property<int?>("IdeaId");
+
+                    b.Property<int>("Rank");
 
                     b.Property<DateTime>("created_at");
 

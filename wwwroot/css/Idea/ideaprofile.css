@@ -38,6 +38,10 @@ nav a{
     background-color: #080762;
     color: #ccc;
     border:1px solid #ccc;
-
-
 }
+
+.IdeaHand{
+    display: inline-block;
+    margin-left: 64%;
+}
+
