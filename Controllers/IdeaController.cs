@@ -33,10 +33,13 @@ namespace inkling.Controllers
         [Route("idea/form")]
         public IActionResult IdeaForm()
         {
+            var departId=HttpContext.Session.Get("departId");
+            System.Console.WriteLine(departId);
+            var rank=HttpContext.Session.Get("rank");
+            ViewBag.approvers=dbContext.Users;
+            ViewBag.id=HttpContext.Session.Get("id");
 
-
-
-            return View();
+            return View("newidea");
         }
         [HttpPost]
         [Route("idea/form/process")]
