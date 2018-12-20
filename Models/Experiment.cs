@@ -15,7 +15,7 @@ namespace inkling.Models
         [Required]
         [MinLength  (3)]
         public string ExperimentDesc {get; set;}
-         [Display(Name="Result Link")] 
+        [Display(Name="Result Link")] 
         public string Result {get; set;}
         [Display(Name="Score Range 0-10")] 
         public int Score {get; set;}
