@@ -1,14 +1,39 @@
 @model LoginUser
+<style>
+    .login{
+    height:85px;
+    width:691px;
+    margin-left: 28%;
+    margin-top:3%;
+    margin-bottom: -12%;
+}
+.inline{
+    display: inline-block;
+}
+.email{
+    display:inline-block;
+    vertical-align: bottom;
+        margin-left: 11%;
+}
+.password{
+    display:inline-block;
+    margin-left: 30%;
+}
+.linputbox{
+    width:250px;
+    display:inline-block;
+}
+</style>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="~/css/User/LoginUser.css"/>
     <div class="login">
-        Login here!
+        
         <form asp-action="login" asp-controller="User" method="post">
             <label class="email" asp-for="Email"></label>
             <label class="password" asp-for="Password"></label>
-
-            <input  class ="inputbox" type="text" asp-for="Email">
-            <input  class ="inputbox" type="password" asp-for="Password">
+            <br>
+            <h6 class="inline" >Login here!</h6>
+            <input  class ="linputbox" type="text" asp-for="Email">
+            <input  class ="linputbox" type="password" asp-for="Password">
             <input  type="submit" value="Login">
             
             <span asp-validation-for="Email"></span>
