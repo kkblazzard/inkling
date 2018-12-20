@@ -11,11 +11,11 @@ namespace inkling.Models
     {
         [Key]
         public int IdeaId {get; set;}
-        [Display(Name="Project Name:")] //display name for forms
+        [Display(Name="Idea Name:")] //display name for forms
         [Required] // marks it as a required field
         [MinLength  (3)]
         public string name {get; set;}
-        [Display(Name="Project Description:")] //display name for forms
+        [Display(Name="Idea Description:")] //display name for forms
         [Required] // marks it as a required field
         [MinLength (3)]
 

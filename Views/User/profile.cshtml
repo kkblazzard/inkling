@@ -23,7 +23,7 @@
         <div class="scrollbox">
             @foreach(var idea in Model)
             {
-                <a href="idea/@idea.id">@idea.name</a>
+                <a href="ideaprofile/@idea.IdeaId">@idea.name</a>
             }
         </div>
     </div>    
@@ -32,7 +32,7 @@
         <div class="scrollbox">
             @foreach(var review in ViewBag.review)
             {
-                <a href="idea/@review.id">@review.name</a>
+                <a href="ideaprofile/@review.IdeaId">@review.name</a>
             }
         </div>
     </div>
