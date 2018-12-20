@@ -47,6 +47,9 @@ namespace inkling.Models
         [DataType(DataType.Password)]
         public string confirm_password {get; set;}
         public List<Department> department {get; set;}
+        public List<Message> Messages {get; set;}
+        public List<Idea> Ideas {get; set;}
+        public Idea Idea {get; set;}
 
         
     }

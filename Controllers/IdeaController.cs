@@ -35,10 +35,9 @@ namespace inkling.Controllers
             ViewBag.creator=dbContext.Users.FirstOrDefault(u=>u.UserId==userid);
             ViewBag.approvers=dbContext.Users.Where(a=>a.departId ==departId && a.Rank > rank);
 
-            var Idea = dbContext.Ideas
-            .Include(I => I.message)
-            .ThenInclude(M => M.Creator)
-            .FirstOrDefault(F => F.IdeaId == id);
+            ViewBag.messages= dbContext.Message
+            .Include(I => I.Creator)
+            .Where(F => F.IdeaId == id).OrderByDescending(c=> c.created_at).ToList();
 
 
             ViewBag.Idea = dbContext.Ideas.FirstOrDefault(i=>i.IdeaId==id);
