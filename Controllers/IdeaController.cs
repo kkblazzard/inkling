@@ -34,12 +34,32 @@ namespace inkling.Controllers
             ViewBag.id=userid;
             ViewBag.creator=dbContext.Users.FirstOrDefault(u=>u.UserId==userid);
             ViewBag.approvers=dbContext.Users.Where(a=>a.departId ==departId && a.Rank > rank);
-            Idea idea = dbContext.Ideas.FirstOrDefault(i=>i.IdeaId==id);
-            int cid=(int)idea.CreatorId;
+
+            var Idea = dbContext.Ideas
+            .Include(I => I.message)
+            .ThenInclude(M => M.Creator)
+            .FirstOrDefault(F => F.IdeaId == id);
+
+
+            ViewBag.Idea = dbContext.Ideas.FirstOrDefault(i=>i.IdeaId==id);
+            int cid=(int)ViewBag.Idea.CreatorId;
             var creator=dbContext.Users.FirstOrDefault(u=>u.UserId==cid);
             ViewBag.creator=creator;
-            return View(idea);
+            return View();
         }
+/////////////////////////////////////////////////////// POST PROFILE PAGE MESSAGE BOARD ///////////////////////
+
+        [HttpPost]
+        [Route("messages/{id}")]
+        public IActionResult Messages(Message Submission, int id)
+            {
+                System.Console.WriteLine("0000000000000000000000000 enter function 000000000000000000000000000000000");
+                dbContext.Message.Add(Submission);
+                dbContext.SaveChanges();
+                return Redirect($"/ideaprofile/{id}");
+            }
+
+///////////////////////////////////////////////////////  ///////////////////////
 
         [HttpGet]
         [Route("idea/form")]
