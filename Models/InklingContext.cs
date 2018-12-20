@@ -7,7 +7,6 @@ namespace inkling.Models
         // base() calls the parent class' constructor passing the "options" parameter along
         public InklingContext(DbContextOptions<InklingContext> options) : base(options) { }
         public DbSet<User> Users {get;set;}
-        public DbSet<Approver> Approver {get;set;}
         public DbSet<Department> Department {get;set;}
         public DbSet<Edd> Edd {get;set;}
         public DbSet<Idea> Ideas {get;set;}

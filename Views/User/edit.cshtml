@@ -2,9 +2,22 @@
 
 <head>
     <title>Edit User</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="~/css/User/edit.css"/>
 <style>
 .inline{
+    display:inline-block;
+    }
+.left{
         display: inline-block; text-align:left;
+        vertical-align: top;
+        padding-left:10%;
+
+}
+.right{
+        display: inline-block; text-align:left;
+        vertical-align: top;
+        padding-left:10%;
+        margin-top:23px;
 
 }
 </style>
@@ -19,49 +32,69 @@
     <nav>
         <a href="/dashboard">Home |</a>
         <a>Edit User Profile |</a>
-        <a href="/NewIdea">New Idea |</a>
+        <a href="/idea/form">New Idea |</a>
         <a href="/AllIdeas">Ideas in your que |</a>
         <a href="/review">Review ideas</a>
         <a href="/Logout">Logout</a>
     </nav>
-
-                <div class="col-md-4 mb-3">
-                    
-                    <h1 class="inline">Edit User</h1>
-                    <button href="/weddings">Home</button>
-                    <form  asp-action="update" asp-Controller="Users" method="post">
-            <br><span></span>
-            <label asp-for="fname"></label>
+    <div class="col-md-4 mb-3">
+        <h1 class="inline">Edit User</h1>
+        <div class="left">           
+            <form  asp-action="update" asp-Controller="Users" method="post">
+                <br><span></span>
+                <label asp-for="fname"></label>
+                <br>
+                <input  class ="inputbox" type="text" asp-for="fname">
+                <br>
+                <span asp-validation-for="fname"></span>
+                <br>
+                <label asp-for="lname"></label>
+                <br>
+                <input  class ="inputbox" type="text" asp-for="lname">
+                <br>
+                <span asp-validation-for="lname"></span>
+                <br>
+            <label asp-for="departId"></label>
             <br>
-            <input  class =inputbox type="text" asp-for="fname">
+            <select class="inputbox" asp-for="departId">
+                <option value="0">Customer Service</option>
+                <option value="1">DevOps</option>
+                <option value="2">Marketing/Sales</option>
+            </select>
             <br>
-            <span asp-validation-for="fname"></span>
+            <label asp-for="Rank"></label>
             <br>
-            <label asp-for="lname"></label>
+            <select class="inputbox" asp-for="Rank">
+                <option value="5">Employee</option>
+                <option value="4">Supervisor</option>
+                <option value="3">Manager</option>
+                <option value="2">Director</option>
+                <option value="1">VP</option>
+                <option value="0">C</option>
+            </select>
             <br>
-            <input  class =inputbox type="text" asp-for="lname">
-            <br>
-            <span asp-validation-for="lname"></span>
-            <br>
+        </div>
+        <div class="right">
             <label asp-for="email" ></label>
             <br>
-            <input  class =inputbox type="text" asp-for="email">
+            <input  class ="inputbox" type="text" asp-for="email">
             <br>
             <span asp-validation-for="email"></span>
             <br>
             <label asp-for="password" ></label><br>
-            <input  class =inputbox type="password" asp-for="password">
+            <input  class ="inputbox" type="password" asp-for="password">
             <br>
             <span asp-validation-for="password"></span>
             <br>
             <label asp-for="confirm_password"></label><br>
-            <input  class =inputbox type="password" asp-for="confirm_password">
+            <input  class ="inputbox" type="password" asp-for="confirm_password">
             <br>
             <input asp-for="UserId" type ="hidden" >
             <br>
             <input type="submit" value="Update"><br>
-            </form>
-                </div>
+        </form>
+        </div>
+    </div>
                 
                 
             </body>

@@ -25,11 +25,17 @@ namespace inkling.Models
         public int ApproverId {get; set;}
 
         public int ApproverRank0 {get; set;}
+        public string zeroAD {get; set;}
         public int ApproverRank1 {get; set;}
+        public string oneAD {get; set;}
         public int ApproverRank2 {get; set;}
+        public string twoAD {get; set;}
         public int ApproverRank3 {get; set;}
+        public string threeAD {get; set;}
         public int ApproverRank4{get; set;}
+        public string fourAD {get; set;}
         public int ApproverRank5 {get; set;}
+        public string fiveAD {get; set;}
         public int CreatorId {get; set;}
         public List<Department> Department{get; set;}
         public List<Message> message{get; set;}
