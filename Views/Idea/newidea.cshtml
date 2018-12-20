@@ -25,7 +25,7 @@
     <h6>Approval Ladder:</h6>
 @{ var count=2;
     <ol type="1">
-        <li>1. @ViewBag.creator.fname @ViewBag.creator.lname</li>
+        <li>@ViewBag.creator.fname @ViewBag.creator.lname</li>
         @foreach(var a in ViewBag.approvers)
             {   
                 <li>@count. @a.fname @a.lname</li>

@@ -1,13 +1,21 @@
 .login{
+    height:500px;
+    width:500px;
+    background-color:red;
     margin-left: 22%;
     margin-bottom: -15%;
 }
-.login form{
+.inline{
     display: inline-block;
-    text-align: left;
+}
+.email{
+    display:inline-block;
     vertical-align: bottom;
 }
+.password{
 
-label{
-    display: inline-block;
+}
+.linputbox{
+    width:250px;
+    display:inline-block;
 }
