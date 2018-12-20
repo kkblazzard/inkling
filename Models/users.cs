@@ -33,11 +33,12 @@ namespace inkling.Models
     
         public string  password {get; set;}
         [Display(Name="Title:")]
-        public int Rank {get;set;}
+        
         public DateTime created_at {get; set;}=DateTime.Now;
         public DateTime updated_at {get; set;}=DateTime.Now;
         [Display(Name="Department:")]
         public int departId {get; set;}
+        public int Rank {get;set;}
 
         [NotMapped] //none mapped(not savedin database) entries needed for compaire validation to prevent user error
         [Display(Name="Confirm Password")]

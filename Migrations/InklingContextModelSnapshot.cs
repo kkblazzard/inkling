@@ -17,24 +17,6 @@ namespace inkling.Migrations
                 .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("inkling.Models.Approver", b =>
-                {
-                    b.Property<int>("ApproverId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("IdeaId");
-
-                    b.Property<int>("UserId");
-
-                    b.Property<DateTime>("created_at");
-
-                    b.Property<DateTime>("updated_at");
-
-                    b.HasKey("ApproverId");
-
-                    b.ToTable("Approver");
-                });
-
             modelBuilder.Entity("inkling.Models.Department", b =>
                 {
                     b.Property<int>("DepartmentId")
@@ -105,14 +87,24 @@ namespace inkling.Migrations
                     b.Property<string>("desc")
                         .IsRequired();
 
+                    b.Property<string>("fiveAD");
+
+                    b.Property<string>("fourAD");
+
                     b.Property<string>("name")
                         .IsRequired();
 
+                    b.Property<string>("oneAD");
+
+                    b.Property<string>("threeAD");
+
+                    b.Property<string>("twoAD");
+
                     b.Property<DateTime>("updated_at");
 
-                    b.HasKey("IdeaId");
+                    b.Property<string>("zeroAD");
 
-                    b.HasIndex("ApproverId");
+                    b.HasKey("IdeaId");
 
                     b.ToTable("Ideas");
                 });
@@ -172,8 +164,6 @@ namespace inkling.Migrations
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("ApproverId");
-
                     b.Property<int?>("IdeaId");
 
                     b.Property<int>("Rank");
@@ -198,8 +188,6 @@ namespace inkling.Migrations
 
                     b.HasKey("UserId");
 
-                    b.HasIndex("ApproverId");
-
                     b.HasIndex("IdeaId");
 
                     b.ToTable("Users");
@@ -215,14 +203,6 @@ namespace inkling.Migrations
                     b.HasOne("inkling.Models.User", "User")
                         .WithMany("department")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("inkling.Models.Idea", b =>
-                {
-                    b.HasOne("inkling.Models.Approver")
-                        .WithMany("idea")
-                        .HasForeignKey("ApproverId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -248,10 +228,6 @@ namespace inkling.Migrations
 
             modelBuilder.Entity("inkling.Models.User", b =>
                 {
-                    b.HasOne("inkling.Models.Approver")
-                        .WithMany("User")
-                        .HasForeignKey("ApproverId");
-
                     b.HasOne("inkling.Models.Idea")
                         .WithMany("User")
                         .HasForeignKey("IdeaId");
