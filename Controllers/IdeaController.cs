@@ -73,17 +73,19 @@ namespace inkling.Controllers
 
             return Redirect($"/ideaprofile/{id}");
         }
+        /////////////////////////////////////////////////////// All Ideas ///////////////////////
+
         [HttpGet]
-        [Route("idea/{id}")]
-        public IActionResult IdeaFormProcess(int id)
+        [Route("idea/all")]
+        public IActionResult AllIdeas(int id)
         {   
             if(HttpContext.Session.GetString("Login")==null || HttpContext.Session.GetString("Login")!="True")
             {
                 return Redirect("/");
             }
-            var anidea=dbContext.Ideas.FirstOrDefault(i=>i.IdeaId == id);
+            List <Idea> ideas=dbContext.Ideas.ToList();
 
-            return View(anidea);
+            return View(ideas);
         }
 
 
