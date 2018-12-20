@@ -37,9 +37,9 @@
     </div>
     <br>
     <h3>Submit an Experiment</h3>
-    <form asp-action="addexperiment/@ViewBag.id" asp-controller="Idea" method="post">
+    <form action="/AddExperiment/@ViewBag.id"  method="post">
         <br>
-        <input type="hidden" asp-for="IdeaId" value=id>
+        <input type="hidden" asp-for="IdeaId" value=@ViewBag.id>
 
     <span asp-validation-for="ExperimentDesc"></span>
         <label asp-for="ExperimentDesc"></label>
@@ -58,22 +58,24 @@
     </form>
 
    <h3>Completed Experiments</h3>
+@if(ViewBag.Experiment != null){
 
-<table>
-  <tr>
-    <th>Experiment</th>
-    <th>Result</th>
-    <th>Score</th>
-  </tr>
-      @foreach(var e in ViewBag.Experiment)
-      {
-  <tr>
-    <td>@e.ExperimentDesc</td>
-    <td>@e.Result</td>
-    <td>@e.Score</td>
-  </tr>
-      }
-</table>
+    <table>
+    <tr>
+        <th>Experiment</th>
+        <th>Result</th>
+        <th>Score</th>
+    </tr>
+        @foreach(var e in ViewBag.Experiment)
+        {
+    <tr>
+        <td>@e.ExperimentDesc</td>
+        <td>@e.Result</td>
+        <td>@e.Score</td>
+    </tr>
+        }
+    </table>
+}
 
 
 
