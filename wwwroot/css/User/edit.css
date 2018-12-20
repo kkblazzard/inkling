@@ -18,6 +18,29 @@ nav a{
 }
 /* ++++++++++++End Header +++++++++++++++++++ */
 
+.inline{
+    display:inline-block;
+    }
+.left{
+        display: inline-block; text-align:left;
+        vertical-align: top;
+        padding-left:10%;
+
+}
+.right{
+        display: inline-block; text-align:left;
+        vertical-align: top;
+        padding-left:10%;
+        margin-top:23px;
+
+}
 .inputbox{
     width:220px;
+}
+.photo{
+margin-top:-46%;
+}
+.img{
+    height: 181px;
+    width: 225px;
 }
