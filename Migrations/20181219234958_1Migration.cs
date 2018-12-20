@@ -4,26 +4,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace inkling.Migrations
 {
-    public partial class cMigration : Migration
+    public partial class _1Migration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Approver",
-                columns: table => new
-                {
-                    ApproverId = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    UserId = table.Column<int>(nullable: false),
-                    IdeaId = table.Column<int>(nullable: false),
-                    created_at = table.Column<DateTime>(nullable: false),
-                    updated_at = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Approver", x => x.ApproverId);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Edd",
                 columns: table => new
@@ -49,11 +33,17 @@ namespace inkling.Migrations
                     desc = table.Column<string>(nullable: false),
                     ApproverId = table.Column<int>(nullable: false),
                     ApproverRank0 = table.Column<int>(nullable: false),
+                    zeroAD = table.Column<string>(nullable: true),
                     ApproverRank1 = table.Column<int>(nullable: false),
+                    oneAD = table.Column<string>(nullable: true),
                     ApproverRank2 = table.Column<int>(nullable: false),
+                    twoAD = table.Column<string>(nullable: true),
                     ApproverRank3 = table.Column<int>(nullable: false),
+                    threeAD = table.Column<string>(nullable: true),
                     ApproverRank4 = table.Column<int>(nullable: false),
+                    fourAD = table.Column<string>(nullable: true),
                     ApproverRank5 = table.Column<int>(nullable: false),
+                    fiveAD = table.Column<string>(nullable: true),
                     CreatorId = table.Column<int>(nullable: false),
                     EddId = table.Column<int>(nullable: false),
                     created_at = table.Column<DateTime>(nullable: false),
@@ -62,12 +52,6 @@ namespace inkling.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Ideas", x => x.IdeaId);
-                    table.ForeignKey(
-                        name: "FK_Ideas_Approver_ApproverId",
-                        column: x => x.ApproverId,
-                        principalTable: "Approver",
-                        principalColumn: "ApproverId",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -104,22 +88,15 @@ namespace inkling.Migrations
                     lname = table.Column<string>(nullable: false),
                     email = table.Column<string>(nullable: false),
                     password = table.Column<string>(nullable: false),
-                    Rank = table.Column<int>(nullable: false),
                     created_at = table.Column<DateTime>(nullable: false),
                     updated_at = table.Column<DateTime>(nullable: false),
                     departId = table.Column<int>(nullable: false),
-                    ApproverId = table.Column<int>(nullable: true),
+                    Rank = table.Column<int>(nullable: false),
                     IdeaId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.UserId);
-                    table.ForeignKey(
-                        name: "FK_Users_Approver_ApproverId",
-                        column: x => x.ApproverId,
-                        principalTable: "Approver",
-                        principalColumn: "ApproverId",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Users_Ideas_IdeaId",
                         column: x => x.IdeaId,
@@ -197,11 +174,6 @@ namespace inkling.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Ideas_ApproverId",
-                table: "Ideas",
-                column: "ApproverId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Message_IdeaId",
                 table: "Message",
                 column: "IdeaId");
@@ -215,11 +187,6 @@ namespace inkling.Migrations
                 name: "IX_Results_EddId1",
                 table: "Results",
                 column: "EddId1");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Users_ApproverId",
-                table: "Users",
-                column: "ApproverId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_IdeaId",
@@ -246,9 +213,6 @@ namespace inkling.Migrations
 
             migrationBuilder.DropTable(
                 name: "Ideas");
-
-            migrationBuilder.DropTable(
-                name: "Approver");
         }
     }
 }

@@ -12,7 +12,6 @@ namespace inkling.Controllers
     public class UserController : Controller
     {
         private InklingContext dbContext;
-     
         // here we can "inject" our context service into the constructor
         public UserController(InklingContext context)
         {
@@ -31,10 +30,10 @@ namespace inkling.Controllers
         [HttpPost]
         [Route ("register")]
         public IActionResult Register(User used )
-        {System.Console.WriteLine("entered reg+++++++++++++++++++++++++++++++");
+        {
             //validating submission against models
             if(ModelState.IsValid)
-            { System.Console.WriteLine("passed model validation++++++++++++++++++++++++++");
+            { 
                 //verifying the email address is not already in use
                 if(dbContext.Users.Any(u=> u.email == used.email))
                 {System.Console.WriteLine("failed email validation+++++++++++++++++++++++++++++++++++++");
@@ -42,27 +41,24 @@ namespace inkling.Controllers
                     ModelState.AddModelError("email", "Email already in use!");
                     return View("Index");
                 }
-                System.Console.WriteLine("everything passed hashing PW+++++++++++++++++++++++");
                 //hasshing user password before saving to the database and saving to user instance
                 PasswordHasher<User> Hasher = new PasswordHasher<User>();
                 used.password = Hasher.HashPassword(used, used.password);
                 //Save your user object to the database
-                System.Console.WriteLine("Password Hashed adding to DB++++++++++++++");
                 dbContext.Add(used);
-                System.Console.WriteLine("Password Hashed saving to DB++++++++++++++");
                 dbContext.SaveChanges();
-                System.Console.WriteLine("created new user sending to dashboard page++++++++++++++");
+
                 HttpContext.Session.SetString("Login", "True");
                 ViewBag.login=HttpContext.Session.GetString("Login");
                 User user = dbContext.Users.FirstOrDefault(u => u.email == used.email);
-                HttpContext.Session.SetInt32("id",user.UserId);
-                HttpContext.Session.SetString("fname",user.fname);
-                HttpContext.Session.SetInt32("DepartId",user.departId);
-                HttpContext.Session.SetInt32("Rank",user.Rank);
+                HttpContext.Session.SetInt32("id",used.UserId);
+                HttpContext.Session.SetString("fname",used.fname);
+                HttpContext.Session.SetInt32("departId",used.departId);
+                HttpContext.Session.SetInt32("rank",used.Rank);
 
                 return RedirectToAction("Dashboard");
             }
-            System.Console.WriteLine("modelstate is valid failed++++++++++++++++++++++++++++++++++++++++");
+
             return View("Index");
         }
 

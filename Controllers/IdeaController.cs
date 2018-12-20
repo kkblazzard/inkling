@@ -12,7 +12,6 @@ namespace inkling.Controllers
     public class IdeaController : Controller
     {
         private InklingContext dbContext;
-     
         // here we can "inject" our context service into the constructor
         public IdeaController(InklingContext context)
         {
@@ -21,8 +20,8 @@ namespace inkling.Controllers
 /////////////////////////////////////////////////////// GET IDEA PROFILE PAGE ///////////////////////
         
         [HttpGet]
-        [Route("ideaprofile")]
-        public IActionResult IdeaProfile()
+        [Route("ideaprofile/{id}")]
+        public IActionResult IdeaProfile(int id)
         {
 
 
@@ -33,11 +32,13 @@ namespace inkling.Controllers
         [Route("idea/form")]
         public IActionResult IdeaForm()
         {
-            var departId=HttpContext.Session.Get("departId");
-            System.Console.WriteLine(departId);
-            var rank=HttpContext.Session.Get("rank");
+            int departId=(int)HttpContext.Session.GetInt32("departId");
+            int rank=(int)HttpContext.Session.GetInt32("rank");
             ViewBag.approvers=dbContext.Users;
-            ViewBag.id=HttpContext.Session.Get("id");
+            int id=(int)HttpContext.Session.GetInt32("id");
+            ViewBag.id=id;
+            ViewBag.creator=dbContext.Users.FirstOrDefault(u=>u.UserId==id);
+            ViewBag.approvers=dbContext.Users.Where(a=>a.departId ==departId && a.Rank > rank);
 
             return View("newidea");
         }
@@ -49,7 +50,7 @@ namespace inkling.Controllers
             dbContext.SaveChanges();
             int id=newIdea.IdeaId;
 
-            return Redirect($"/idea/{id}");
+            return Redirect($"ideaprofile/{id}");
         }
         [HttpGet]
         [Route("idea/{id}")]
