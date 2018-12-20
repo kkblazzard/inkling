@@ -1,4 +1,4 @@
-/*++++++++++++++ Header ++++++++++++++++*/
+/*++++++++++++++ Nav ++++++++++++++++*/
 header{
     display: inline;
 
@@ -15,11 +15,9 @@ nav a{
     font-family: sans-serif;
     text-decoration-color: white;
     text-decoration: none;
+
 }
-.img{
-    margin-top: -57px;
-}
-/* ++++++++++++End Header +++++++++++++++++++ */
+/* ++++++++++++ End Nav +++++++++++++++++++ */
 
 .registration{
     display:inline-block;
@@ -40,11 +38,7 @@ nav a{
     height:110%;
     Width:100%;
 }
-.logo{
-    height:350px;
-    width: 350px;
-    vertical-align: top;
-}
+
 .desc{
     display: inline-block;
     vertical-align: top;
