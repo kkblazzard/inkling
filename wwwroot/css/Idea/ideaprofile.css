@@ -16,8 +16,15 @@ nav a{
     text-decoration-color: white;
     text-decoration: none;
 }
+.intro{
+    margin-left:25%;
+
+}
 .left{
     display:inline-block;
+    margin-top:-3%;
+
+
 }
 .DescBox{
     display: inline-block;
@@ -25,13 +32,15 @@ nav a{
     width:300px;
     border:1px solid #ccc;
     font:16px/26px Georgia, Garamond, Serif;overflow:auto;
-    vertical-align: top;
+    color:blue;
+    
 }
 
 .ApprList{
     display: inline-block;
-    margin-left: 40%;
+    margin-left: 34%;
     vertical-align:top;
+
 
 }
 .MessageBox{
@@ -42,10 +51,5 @@ nav a{
     background-color: #080762;
     color: #ccc;
     border:1px solid #ccc;
-}
-
-.IdeaHand{
-    display: inline-block;
-    margin-left: 64%;
 }
 

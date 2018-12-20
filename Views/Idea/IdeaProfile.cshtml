@@ -5,18 +5,20 @@
 <header> 
         <partial name="HeadingPartial"/>
 </header>
-<body>
-      <nav>
-        <a href="/dashboard">Home |</a>
-        <a href="/Edit">Edit User Profile |</a>
-        <a href="/idea/form">New Idea |</a>
-        <a href="/idea/all">All Ideas |</a>
-        <a href="/Logout">Logout</a>
-    </nav>
 
-    <div class="left">
+<nav>
+    <a href="/dashboard">Home |</a>
+    <a href="/Edit">Edit User Profile |</a>
+    <a href="/idea/form">New Idea |</a>
+    <a href="/idea/all">All Ideas |</a>
+    <a href="/Logout">Logout</a>
+</nav>
+<div>
+    <div class="intro">
         <h1>Idea Name @Model.name</h1>
-        <h3>Creator: @ViewBag.creator.fname @ViewBag.creator.lname</h3>
+        <h5>Creator: @ViewBag.creator.fname @ViewBag.creator.lname</h5>
+    </div>
+    <div class="left">
         <br>
         <h4>Description</h4>
         <div class= "DescBox" >
@@ -35,16 +37,9 @@
             </ol>
         }
     </div>
-    <div class="IdeaHand">
-        <img src="~/images/IdeaHand.png">
-    </div>
-    
-    
     <a href="/Experiment/@Model.IdeaId">Link to EDD</a>
     </div>
-
     <div class="MessageBox">
         this is the message box
     </div>
-   
-</body>
+</div>

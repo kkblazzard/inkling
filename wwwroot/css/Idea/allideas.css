@@ -11,3 +11,13 @@ nav a{
     text-decoration-color: white;
     text-decoration: none;
 }
+.ideas{
+    display:inline-block;
+    width:45%;
+    height:100%;
+    padding:5px;
+    border: 2px solid rgb(9, 14, 96);
+    margin-top: 3%;
+    margin-left:2%;
+}
+
