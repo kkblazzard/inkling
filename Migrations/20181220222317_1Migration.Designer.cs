@@ -9,8 +9,8 @@ using inkling.Models;
 namespace inkling.Migrations
 {
     [DbContext(typeof(InklingContext))]
-    [Migration("20181220182039_emigrations")]
-    partial class emigrations
+    [Migration("20181220222317_1Migration")]
+    partial class _1Migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -90,6 +90,8 @@ namespace inkling.Migrations
 
                     b.Property<int>("CreatorId");
 
+                    b.Property<int?>("UserId");
+
                     b.Property<DateTime>("created_at");
 
                     b.Property<string>("desc")
@@ -113,6 +115,8 @@ namespace inkling.Migrations
                     b.Property<string>("zeroAD");
 
                     b.HasKey("IdeaId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Ideas");
                 });
@@ -179,7 +183,7 @@ namespace inkling.Migrations
             modelBuilder.Entity("inkling.Models.Department", b =>
                 {
                     b.HasOne("inkling.Models.Idea", "Idea")
-                        .WithMany("Department")
+                        .WithMany("Departments")
                         .HasForeignKey("IdeaId")
                         .OnDelete(DeleteBehavior.Cascade);
 
@@ -197,23 +201,30 @@ namespace inkling.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("inkling.Models.Idea", b =>
+                {
+                    b.HasOne("inkling.Models.User")
+                        .WithMany("Ideas")
+                        .HasForeignKey("UserId");
+                });
+
             modelBuilder.Entity("inkling.Models.Message", b =>
                 {
                     b.HasOne("inkling.Models.Idea", "Idea")
-                        .WithMany("message")
+                        .WithMany("Messages")
                         .HasForeignKey("IdeaId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("inkling.Models.User", "Creator")
-                        .WithMany()
+                        .WithMany("Messages")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("inkling.Models.User", b =>
                 {
-                    b.HasOne("inkling.Models.Idea")
-                        .WithMany("User")
+                    b.HasOne("inkling.Models.Idea", "Idea")
+                        .WithMany()
                         .HasForeignKey("IdeaId");
                 });
 #pragma warning restore 612, 618

@@ -9,6 +9,79 @@ namespace inkling.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Department",
+                columns: table => new
+                {
+                    DepartmentId = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    name = table.Column<string>(nullable: false),
+                    UserId = table.Column<int>(nullable: false),
+                    IdeaId = table.Column<int>(nullable: false),
+                    created_at = table.Column<DateTime>(nullable: false),
+                    updated_at = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Department", x => x.DepartmentId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Experiment",
+                columns: table => new
+                {
+                    ExperimentId = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ExperimentDesc = table.Column<string>(nullable: false),
+                    Result = table.Column<string>(nullable: true),
+                    Score = table.Column<int>(nullable: false),
+                    IdeaId = table.Column<int>(nullable: false),
+                    created_at = table.Column<DateTime>(nullable: false),
+                    updated_at = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Experiment", x => x.ExperimentId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Message",
+                columns: table => new
+                {
+                    MessageId = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    message = table.Column<string>(nullable: false),
+                    UserId = table.Column<int>(nullable: false),
+                    IdeaId = table.Column<int>(nullable: false),
+                    created_at = table.Column<DateTime>(nullable: false),
+                    updated_at = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Message", x => x.MessageId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    fname = table.Column<string>(nullable: false),
+                    lname = table.Column<string>(nullable: false),
+                    email = table.Column<string>(nullable: false),
+                    password = table.Column<string>(nullable: false),
+                    created_at = table.Column<DateTime>(nullable: false),
+                    updated_at = table.Column<DateTime>(nullable: false),
+                    departId = table.Column<int>(nullable: false),
+                    Rank = table.Column<int>(nullable: false),
+                    IdeaId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.UserId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Ideas",
                 columns: table => new
                 {
@@ -31,120 +104,18 @@ namespace inkling.Migrations
                     fiveAD = table.Column<string>(nullable: true),
                     CreatorId = table.Column<int>(nullable: false),
                     created_at = table.Column<DateTime>(nullable: false),
-                    updated_at = table.Column<DateTime>(nullable: false)
+                    updated_at = table.Column<DateTime>(nullable: false),
+                    UserId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Ideas", x => x.IdeaId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Experiment",
-                columns: table => new
-                {
-                    ExperimentId = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    ExperimentDesc = table.Column<string>(nullable: false),
-                    Result = table.Column<string>(nullable: true),
-                    Score = table.Column<int>(nullable: false),
-                    IdeaId = table.Column<int>(nullable: false),
-                    created_at = table.Column<DateTime>(nullable: false),
-                    updated_at = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Experiment", x => x.ExperimentId);
                     table.ForeignKey(
-                        name: "FK_Experiment_Ideas_IdeaId",
-                        column: x => x.IdeaId,
-                        principalTable: "Ideas",
-                        principalColumn: "IdeaId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    UserId = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    fname = table.Column<string>(nullable: false),
-                    lname = table.Column<string>(nullable: false),
-                    email = table.Column<string>(nullable: false),
-                    password = table.Column<string>(nullable: false),
-                    created_at = table.Column<DateTime>(nullable: false),
-                    updated_at = table.Column<DateTime>(nullable: false),
-                    departId = table.Column<int>(nullable: false),
-                    Rank = table.Column<int>(nullable: false),
-                    IdeaId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.UserId);
-                    table.ForeignKey(
-                        name: "FK_Users_Ideas_IdeaId",
-                        column: x => x.IdeaId,
-                        principalTable: "Ideas",
-                        principalColumn: "IdeaId",
+                        name: "FK_Ideas_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
                         onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Department",
-                columns: table => new
-                {
-                    DepartmentId = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    name = table.Column<string>(nullable: false),
-                    UserId = table.Column<int>(nullable: false),
-                    IdeaId = table.Column<int>(nullable: false),
-                    created_at = table.Column<DateTime>(nullable: false),
-                    updated_at = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Department", x => x.DepartmentId);
-                    table.ForeignKey(
-                        name: "FK_Department_Ideas_IdeaId",
-                        column: x => x.IdeaId,
-                        principalTable: "Ideas",
-                        principalColumn: "IdeaId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Department_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Message",
-                columns: table => new
-                {
-                    MessageId = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    message = table.Column<string>(nullable: false),
-                    UserId = table.Column<int>(nullable: false),
-                    IdeaId = table.Column<int>(nullable: false),
-                    created_at = table.Column<DateTime>(nullable: false),
-                    updated_at = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Message", x => x.MessageId);
-                    table.ForeignKey(
-                        name: "FK_Message_Ideas_IdeaId",
-                        column: x => x.IdeaId,
-                        principalTable: "Ideas",
-                        principalColumn: "IdeaId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Message_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -163,6 +134,11 @@ namespace inkling.Migrations
                 column: "IdeaId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Ideas_UserId",
+                table: "Ideas",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Message_IdeaId",
                 table: "Message",
                 column: "IdeaId");
@@ -176,10 +152,62 @@ namespace inkling.Migrations
                 name: "IX_Users_IdeaId",
                 table: "Users",
                 column: "IdeaId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Department_Ideas_IdeaId",
+                table: "Department",
+                column: "IdeaId",
+                principalTable: "Ideas",
+                principalColumn: "IdeaId",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Department_Users_UserId",
+                table: "Department",
+                column: "UserId",
+                principalTable: "Users",
+                principalColumn: "UserId",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Experiment_Ideas_IdeaId",
+                table: "Experiment",
+                column: "IdeaId",
+                principalTable: "Ideas",
+                principalColumn: "IdeaId",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Message_Ideas_IdeaId",
+                table: "Message",
+                column: "IdeaId",
+                principalTable: "Ideas",
+                principalColumn: "IdeaId",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Message_Users_UserId",
+                table: "Message",
+                column: "UserId",
+                principalTable: "Users",
+                principalColumn: "UserId",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Users_Ideas_IdeaId",
+                table: "Users",
+                column: "IdeaId",
+                principalTable: "Ideas",
+                principalColumn: "IdeaId",
+                onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Users_Ideas_IdeaId",
+                table: "Users");
+
             migrationBuilder.DropTable(
                 name: "Department");
 
@@ -190,10 +218,10 @@ namespace inkling.Migrations
                 name: "Message");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "Ideas");
 
             migrationBuilder.DropTable(
-                name: "Ideas");
+                name: "Users");
         }
     }
 }

@@ -24,6 +24,8 @@
         <div class= "DescBox" >
             @ViewBag.Idea.desc
         </div>
+        <br>
+        <a href="/Experiment/@ViewBag.Idea.IdeaId">Link to EDD</a>
     </div>
     <div class="ApprList">
         <h4>List of approvals</h4>
@@ -39,14 +41,25 @@
     
     </div>
 
-    <a href="/Experiment/@ViewBag.Idea.IdeaId">Link to EDD</a>
+    
 
 
     </div>
     <div class="MessageBox">
-        <form action="/Messages/{id}" method="post">
+        <div class="message">
+            <ul>
+            @{
+                @foreach(var m in @ViewBag.messages){
+               <li>@m.Creator.fname @m.Creator.lname @m.created_at.ToString("MM/dd/yyyy")</li> 
+               <li style="list-style-type: none;" > @m.message </li>
+            }
+            }
+            </ul>
+        </div>
+        <form action="/Messages/@ViewBag.Idea.IdeaId" method="post">
  
         <input type="hidden" asp-for="UserId" value="@ViewBag.id">
+        <input type="hidden" asp-for="IdeaId" value="@ViewBag.Idea.IdeaId">
         <label asp-for="message"></label>
         <input asp-for="message">
         <button>Submit</button>

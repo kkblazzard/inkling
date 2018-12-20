@@ -37,9 +37,10 @@ namespace inkling.Models
         public int ApproverRank5 {get; set;}
         public string fiveAD {get; set;}
         public int CreatorId {get; set;}
-        public List<Department> Department{get; set;}
-        public List<Message> message{get; set;}
-        public List<User> User{get; set;}
+        public List<Department> Departments{get; set;}
+        public List<Message> Messages{get; set;}
+
+
         public List<Experiment> Experiments{get; set;}
         
         public DateTime created_at {get; set;}=DateTime.Now;

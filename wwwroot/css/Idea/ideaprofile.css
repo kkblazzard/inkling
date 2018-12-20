@@ -17,7 +17,7 @@ nav a{
     text-decoration: none;
 }
 .intro{
-    margin-left:25%;
+    margin-left: 33%;
 
 }
 .left{
@@ -38,7 +38,7 @@ nav a{
 
 .ApprList{
     display: inline-block;
-    margin-left: 34%;
+    margin-left: 24%;
     vertical-align:top;
 
 
@@ -47,9 +47,16 @@ nav a{
     position: fixed;
     bottom: 0;
     right: 0;
-    width: 300px;
+    width: 400px;
     background-color: #080762;
     color: #ccc;
     border:1px solid #ccc;
 }
-
+.message{
+    display: inline-block;
+    height:150px;
+    width:400px;
+    border:1px solid #ccc;
+    font:16px/26px Georgia, Garamond, Serif;overflow:auto;
+    color:white;
+}
