@@ -24,6 +24,7 @@
             @foreach(var idea in Model)
             {
                 <a href="ideaprofile/@idea.IdeaId">@idea.name</a>
+                <br>
             }
         </div>
     </div>    
@@ -33,6 +34,7 @@
             @foreach(var review in ViewBag.review)
             {
                 <a href="ideaprofile/@review.IdeaId">@review.name</a>
+                <br>
             }
         </div>
     </div>
