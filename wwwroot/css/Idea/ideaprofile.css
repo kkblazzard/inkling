@@ -1,3 +1,4 @@
+
 header{
     display: inline;
 
@@ -15,7 +16,9 @@ nav a{
     text-decoration-color: white;
     text-decoration: none;
 }
-
+.left{
+    display:inline-block;
+}
 .DescBox{
     display: inline-block;
     height:150px;
@@ -28,6 +31,7 @@ nav a{
 .ApprList{
     display: inline-block;
     margin-left: 40%;
+    vertical-align:top;
 
 }
 .MessageBox{
