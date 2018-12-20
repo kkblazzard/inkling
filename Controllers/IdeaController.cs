@@ -50,7 +50,7 @@ namespace inkling.Controllers
             dbContext.SaveChanges();
             int id=newIdea.IdeaId;
 
-            return Redirect($"ideaprofile/{id}");
+            return Redirect($"/ideaprofile/{id}");
         }
         [HttpGet]
         [Route("idea/{id}")]
@@ -83,7 +83,7 @@ namespace inkling.Controllers
         {
             dbContext.Add(ExperimentSubmission);
             dbContext.SaveChanges();
-            return RedirectToAction($"Experiment/{id}");
+            return Redirect($"/Experiment/{id}");
         }
 
     }
