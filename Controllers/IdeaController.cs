@@ -62,15 +62,28 @@ namespace inkling.Controllers
 
 
 
-/////////////////////////////////////////////////////// GET EDD PAGE ///////////////////////
+/////////////////////////////////////////////////////// GET EXPERITMENT PAGE ///////////////////////
 
         [HttpGet]
-        [Route("edd")]
-        public IActionResult Edd()
+        [Route("experiment/{id}")]
+        public IActionResult Experiment(int id)
         {
-
+            var Experiment =dbContext.Experiment.FirstOrDefault( u => u.IdeaId == id);
+            ViewBag.Experiment = Experiment;
+            ViewBag.Id=id;
 
             return View();
         }
+/////////////////////////////////////////////////////// POST EXPERITMENT ///////////////////////
+
+        [HttpPost]
+        [Route("addexperiment/{id}")]
+        public IActionResult AddExperiment(Experiment ExperimentSubmission, int id)
+        {
+            dbContext.Add(ExperimentSubmission);
+            dbContext.SaveChanges();
+            return RedirectToAction($"Experiment/{id}");
+        }
+
     }
 }

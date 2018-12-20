@@ -1,0 +1,81 @@
+@model Experiment
+<head>
+    <link rel="stylesheet" type="text/css" media="screen" href="~/css/Idea/Experiment.css"/>
+</head>
+<header> 
+        <partial name="HeadingPartial"/>
+</header>
+<body>
+
+    <nav>
+        <a href="/dashboard">Home |</a>
+        <a href="/Edit">Edit User Profile |</a>
+        <a href="/NewIdea">New Idea |</a>
+        <a href="/AllIdeas">Ideas in your que |</a>
+        <a href="/review">Review ideas |</a>
+        <a href="/Logout">Logout</a>
+    </nav>
+
+
+    <div class="MainText"> 
+    <h4>Experiment-Driven Design</h4>
+    A thought process to help you figure out how to get implement your ideas!
+    Each Experiment you conduct will have three parts.
+    One, Describe your Experiments, provide your hypothesis and predictions.
+    Two, Describe your result, show whether the experiments worked and your beliefs about them.
+    Three, give each experiment a score based on how successful it was in 
+    proving that your idea will accomplish the desired results.
+    <br>Tips:<br>
+    -Make your experiments easy to follow so the next person approving your idea will understand it better.<br>
+    -Try to be specific in your experiments. And clarify proof-of-concept.<br>
+    -Take your time. All your progress will be saved so come back and add more experiments.
+    </div>
+
+    <div class="EddPic">
+        <img src="images/EddPic.png">
+    </div>
+    <br>
+    <h3>Submit an Experiment</h3>
+    <form asp-action="addexperiment/@ViewBag.id" asp-controller="Idea" method="post">
+        <br>
+        <input type="hidden" asp-for="IdeaId" value=id>
+
+    <span asp-validation-for="ExperimentDesc"></span>
+        <label asp-for="ExperimentDesc"></label>
+        <textarea asp-for="ExperimentDesc"></textarea>
+
+        <span asp-validation-for="Result"></span>
+        <label asp-for="Result"></label>
+        <input asp-for="Result">
+
+        <span asp-validation-for="Score"></span>
+        <label asp-for="Score"></label>
+        <input asp-for="Score">
+        <br>
+        <button>Submit</button>
+
+    </form>
+
+   <h3>Completed Experiments</h3>
+
+<table>
+  <tr>
+    <th>Experiment</th>
+    <th>Result</th>
+    <th>Score</th>
+  </tr>
+      @foreach(var e in ViewBag.Experiment)
+      {
+  <tr>
+    <td>@e.ExperimentDesc</td>
+    <td>@e.Result</td>
+    <td>@e.Score</td>
+  </tr>
+      }
+</table>
+
+
+
+
+
+</body>
