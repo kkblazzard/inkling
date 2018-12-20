@@ -8,10 +8,10 @@ namespace inkling.Models
         public InklingContext(DbContextOptions<InklingContext> options) : base(options) { }
         public DbSet<User> Users {get;set;}
         public DbSet<Department> Department {get;set;}
-        public DbSet<Edd> Edd {get;set;}
+        public DbSet<Experiment> Experiment {get;set;}
         public DbSet<Idea> Ideas {get;set;}
         public DbSet<Message> Message  {get;set;}
-        public DbSet<Results> Results  {get;set;}
+
 
     }
 }

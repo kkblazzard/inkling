@@ -1,0 +1,39 @@
+nav {
+    background-color: #080762;
+    padding: 0px 0px 7px 20px;
+
+
+}
+nav a{
+    color: white;
+    font-weight: bolder;
+    font-family: sans-serif;
+    text-decoration-color: white;
+    text-decoration: none;
+}
+.MainText{
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+}
+
+.EddPic{
+    display: inline-block;
+    width: 50%;
+    position: relative;
+    left: 56%;
+    margin-top: -32%;
+    vertical-align: top;
+}
+
+textarea{
+    width: 50%;
+
+}
+table{
+    width:100%;
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: gray;
+}

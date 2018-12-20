@@ -40,7 +40,7 @@ namespace inkling.Models
         public List<Department> Department{get; set;}
         public List<Message> message{get; set;}
         public List<User> User{get; set;}
-        public int EddId {get; set;}
+        public List<Experiment> Experiments{get; set;}
         
         public DateTime created_at {get; set;}=DateTime.Now;
         public DateTime updated_at {get; set;}=DateTime.Now;
