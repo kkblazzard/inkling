@@ -1,4 +1,4 @@
-
+@model Message
 <head>
     <link rel="stylesheet" type="text/css" media="screen" href="~/css/Idea/ideaprofile.css"/>
 </head>
@@ -15,14 +15,14 @@
 </nav>
 <div>
     <div class="intro">
-        <h1>Idea Name @Model.name</h1>
+        <h1> @ViewBag.Idea.name</h1>
         <h5>Creator: @ViewBag.creator.fname @ViewBag.creator.lname</h5>
     </div>
     <div class="left">
         <br>
         <h4>Description</h4>
         <div class= "DescBox" >
-            @Model.desc
+            @ViewBag.Idea.desc
         </div>
     </div>
     <div class="ApprList">
@@ -38,10 +38,22 @@
         }
     
     </div>
-    <div>
-    <a href="/Experiment/@Model.IdeaId">Link to EDD</a>
+
+    <a href="/Experiment/@ViewBag.Idea.IdeaId">Link to EDD</a>
+
+
     </div>
     <div class="MessageBox">
+        <form action="/Messages/{id}" method="post">
+ 
+        <input type="hidden" asp-for="UserId" value="@ViewBag.id">
+        <label asp-for="message"></label>
+        <input asp-for="message">
+        <button>Submit</button>
+
+        
+        
+        </form>
         this is the message box
     </div>
 </div>
