@@ -9,8 +9,8 @@ using inkling.Models;
 namespace inkling.Migrations
 {
     [DbContext(typeof(InklingContext))]
-    [Migration("20181219234958_1Migration")]
-    partial class _1Migration
+    [Migration("20181220005040_dmigrations")]
+    partial class dmigrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,21 +44,29 @@ namespace inkling.Migrations
                     b.ToTable("Department");
                 });
 
-            modelBuilder.Entity("inkling.Models.Edd", b =>
+            modelBuilder.Entity("inkling.Models.Experiment", b =>
                 {
-                    b.Property<int>("EddId")
+                    b.Property<int>("ExperimentId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Eddlink")
+                    b.Property<string>("ExperimentDesc")
                         .IsRequired();
+
+                    b.Property<int>("IdeaId");
+
+                    b.Property<string>("Result");
+
+                    b.Property<int>("Score");
 
                     b.Property<DateTime>("created_at");
 
                     b.Property<DateTime>("updated_at");
 
-                    b.HasKey("EddId");
+                    b.HasKey("ExperimentId");
 
-                    b.ToTable("Edd");
+                    b.HasIndex("IdeaId");
+
+                    b.ToTable("Experiment");
                 });
 
             modelBuilder.Entity("inkling.Models.Idea", b =>
@@ -81,8 +89,6 @@ namespace inkling.Migrations
                     b.Property<int>("ApproverRank5");
 
                     b.Property<int>("CreatorId");
-
-                    b.Property<int>("EddId");
 
                     b.Property<DateTime>("created_at");
 
@@ -136,31 +142,6 @@ namespace inkling.Migrations
                     b.ToTable("Message");
                 });
 
-            modelBuilder.Entity("inkling.Models.Results", b =>
-                {
-                    b.Property<int>("ResultId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("EddId1");
-
-                    b.Property<DateTime>("created_at");
-
-                    b.Property<string>("extra");
-
-                    b.Property<string>("extra2");
-
-                    b.Property<string>("result")
-                        .IsRequired();
-
-                    b.Property<DateTime>("updated_at");
-
-                    b.HasKey("ResultId");
-
-                    b.HasIndex("EddId1");
-
-                    b.ToTable("Results");
-                });
-
             modelBuilder.Entity("inkling.Models.User", b =>
                 {
                     b.Property<int>("UserId")
@@ -208,6 +189,14 @@ namespace inkling.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("inkling.Models.Experiment", b =>
+                {
+                    b.HasOne("inkling.Models.Idea")
+                        .WithMany("Experiments")
+                        .HasForeignKey("IdeaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("inkling.Models.Message", b =>
                 {
                     b.HasOne("inkling.Models.Idea", "Idea")
@@ -219,13 +208,6 @@ namespace inkling.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("inkling.Models.Results", b =>
-                {
-                    b.HasOne("inkling.Models.Edd", "EddId")
-                        .WithMany("Result")
-                        .HasForeignKey("EddId1");
                 });
 
             modelBuilder.Entity("inkling.Models.User", b =>

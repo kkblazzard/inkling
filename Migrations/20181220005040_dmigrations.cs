@@ -4,25 +4,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace inkling.Migrations
 {
-    public partial class _1Migration : Migration
+    public partial class dmigrations : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Edd",
-                columns: table => new
-                {
-                    EddId = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Eddlink = table.Column<string>(nullable: false),
-                    created_at = table.Column<DateTime>(nullable: false),
-                    updated_at = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Edd", x => x.EddId);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Ideas",
                 columns: table => new
@@ -45,7 +30,6 @@ namespace inkling.Migrations
                     ApproverRank5 = table.Column<int>(nullable: false),
                     fiveAD = table.Column<string>(nullable: true),
                     CreatorId = table.Column<int>(nullable: false),
-                    EddId = table.Column<int>(nullable: false),
                     created_at = table.Column<DateTime>(nullable: false),
                     updated_at = table.Column<DateTime>(nullable: false)
                 },
@@ -55,27 +39,27 @@ namespace inkling.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Results",
+                name: "Experiment",
                 columns: table => new
                 {
-                    ResultId = table.Column<int>(nullable: false)
+                    ExperimentId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    result = table.Column<string>(nullable: false),
-                    EddId1 = table.Column<int>(nullable: true),
-                    extra = table.Column<string>(nullable: true),
-                    extra2 = table.Column<string>(nullable: true),
+                    ExperimentDesc = table.Column<string>(nullable: false),
+                    Result = table.Column<string>(nullable: true),
+                    Score = table.Column<int>(nullable: false),
+                    IdeaId = table.Column<int>(nullable: false),
                     created_at = table.Column<DateTime>(nullable: false),
                     updated_at = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Results", x => x.ResultId);
+                    table.PrimaryKey("PK_Experiment", x => x.ExperimentId);
                     table.ForeignKey(
-                        name: "FK_Results_Edd_EddId1",
-                        column: x => x.EddId1,
-                        principalTable: "Edd",
-                        principalColumn: "EddId",
-                        onDelete: ReferentialAction.Restrict);
+                        name: "FK_Experiment_Ideas_IdeaId",
+                        column: x => x.IdeaId,
+                        principalTable: "Ideas",
+                        principalColumn: "IdeaId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -174,6 +158,11 @@ namespace inkling.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Experiment_IdeaId",
+                table: "Experiment",
+                column: "IdeaId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Message_IdeaId",
                 table: "Message",
                 column: "IdeaId");
@@ -182,11 +171,6 @@ namespace inkling.Migrations
                 name: "IX_Message_UserId",
                 table: "Message",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Results_EddId1",
-                table: "Results",
-                column: "EddId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_IdeaId",
@@ -200,16 +184,13 @@ namespace inkling.Migrations
                 name: "Department");
 
             migrationBuilder.DropTable(
+                name: "Experiment");
+
+            migrationBuilder.DropTable(
                 name: "Message");
 
             migrationBuilder.DropTable(
-                name: "Results");
-
-            migrationBuilder.DropTable(
                 name: "Users");
-
-            migrationBuilder.DropTable(
-                name: "Edd");
 
             migrationBuilder.DropTable(
                 name: "Ideas");
