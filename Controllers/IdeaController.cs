@@ -100,9 +100,11 @@ namespace inkling.Controllers
             {
                 return Redirect("/");
             }
-            var Experiment =dbContext.Experiment.FirstOrDefault( u => u.IdeaId == id);
+            List <Experiment> Experiment =dbContext.Experiment.Where( u => u.IdeaId == id).ToList();
             ViewBag.Experiment = Experiment;
-            ViewBag.Id=id;
+            ViewBag.id=id;
+     
+            
 
             return View();
         }
@@ -112,12 +114,15 @@ namespace inkling.Controllers
         [Route("addexperiment/{id}")]
         public IActionResult AddExperiment(Experiment ExperimentSubmission, int id)
         {
+            System.Console.WriteLine("************************************** Enters Function ***********************");
             if(HttpContext.Session.GetString("Login")==null || HttpContext.Session.GetString("Login")!="True")
-            {
-                return Redirect("/");
-            }
+                {
+                    return Redirect("/");
+                }
             dbContext.Add(ExperimentSubmission);
             dbContext.SaveChanges();
+            System.Console.WriteLine("************************************** Saves Data ***********************");
+
 
 
             return Redirect($"/Experiment/{id}");
