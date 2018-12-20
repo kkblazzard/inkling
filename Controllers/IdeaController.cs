@@ -83,7 +83,10 @@ namespace inkling.Controllers
         {
             dbContext.Add(ExperimentSubmission);
             dbContext.SaveChanges();
+
+
             return Redirect($"/Experiment/{id}");
+
         }
 
     }

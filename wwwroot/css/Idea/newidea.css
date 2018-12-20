@@ -1,8 +1,4 @@
-/*++++++++++++++ Header ++++++++++++++++*/
-header{
-    display: inline;
 
-}
 nav {
     background-color: #080762;
     padding: 0px 0px 7px 20px;
@@ -16,7 +12,7 @@ nav a{
     text-decoration-color: white;
     text-decoration: none;
 }
-/* ++++++++++++End Header +++++++++++++++++++ */
+
 .desc{
     height:100%;
     width:100%;
