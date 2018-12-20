@@ -12,8 +12,10 @@
         <a >All Ideas |</a>
         <a href="/Logout">Logout</a>
     </nav>
+<body>
 @foreach(var i in Model){
     <a href="ideaprofile/@i.IdeaId">@i.name</a>
     <p>@i.desc</p>
     <br>
 }
+</body>

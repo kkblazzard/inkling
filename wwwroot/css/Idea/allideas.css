@@ -11,3 +11,6 @@ nav a{
     text-decoration-color: white;
     text-decoration: none;
 }
+body{
+    background-image: url("../../images/allideas.jpeg")
+}
