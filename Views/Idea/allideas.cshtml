@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" media="screen" href="~/css/Idea/Experiment.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="~/css/Idea/allideas.css"/>
 
 <header>
     <div class= "header">
@@ -12,10 +12,11 @@
         <a >All Ideas |</a>
         <a href="/Logout">Logout</a>
     </nav>
-<body>
+<div class="background">
 @foreach(var i in Model){
-    <a href="ideaprofile/@i.IdeaId">@i.name</a>
+    <div class="ideas">
+    <h5>@i.IdeaId: @i.name</h5>
     <p>@i.desc</p>
-    <br>
+    </div>
 }
-</body>
+</div>
