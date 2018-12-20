@@ -1,8 +1,5 @@
 /*++++++++++++++ Nav ++++++++++++++++*/
-header{
-    display: inline;
 
-}
 nav {
     background-color: #080762;
     padding: 0px 0px 7px 20px;
@@ -18,13 +15,15 @@ nav a{
 
 }
 /* ++++++++++++ End Nav +++++++++++++++++++ */
-
+.top{
+    width:100%;
+}
 .registration{
     display:inline-block;
     text-align:left;
     height:400px;
     width:400px;
-    margin-left:100px;
+    margin-left:25px;
 }
 
 .block{
@@ -34,7 +33,7 @@ nav a{
     width:250px;
 }
 .body{
-    background-color:rgb(255, 251, 251);
+    background-color:white;
     height:110%;
     Width:100%;
 }
@@ -46,9 +45,14 @@ nav a{
     margin-left:5%;
 }
 
-.Group img{
+.Group{
     display: inline-block;
     vertical-align: top;
     width: 50%;
-    margin-left:50%;
+    margin-left: 45%;
+    margin-top: -96%;
+}
+.img2{
+    height:500px;
+    width:500px;
 }
