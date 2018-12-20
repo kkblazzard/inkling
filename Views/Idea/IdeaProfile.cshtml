@@ -14,33 +14,32 @@
         <a href="/Logout">Logout</a>
     </nav>
 
-
-    <h1>Idea Name Model.Name</h1>
-    <h3>CreaterID User.FirstName</h3>
-    <br>
-    <h4>Description</h4>
-    <div class= "DescBox" >
-        Model.desc As you can see, once there's enough text in this box, the box will grow
-        scroll bars... that's why we call it a scroll box! You could also place 
-        an image into the scroll box.fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-        ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-        ffffffffffffffffffffffffffffffffffffffffffffff
+    <div class="left">
+        <h1>Idea Name @Model.name</h1>
+        <h3>Creator: @ViewBag.creator.fname @ViewBag.creator.lname</h3>
+        <br>
+        <h4>Description</h4>
+        <div class= "DescBox" >
+            @Model.desc
+        </div>
     </div>
-
-    <div class="IdeaHand">
-        <img src="~images/IdeaHand.png">
-    </div>
-    
     <div class="ApprList">
         <h4>List of approvals</h4>
-            <ul>
-                <li>Approver0</li>
-                <li>Approver1</li>
-                <li>Approver2</li>
-                <li>Approver3</li>
-                <li>Approver4</li>
-                <li>Approver5</li>
-            </ul>
+        @{ var count=2;
+            <ol type="1">
+                <li>@ViewBag.creator.fname @ViewBag.creator.lname</li>
+                @foreach(var a in ViewBag.approvers)
+                    {   
+                        <li>@a.fname @a.lname</li>
+                    }
+            </ol>
+        }
+    </div>
+    <div class="IdeaHand">
+        <img src="~/images/IdeaHand.png">
+    </div>
+    
+    
     </div>
     <h2>Link to EDD </h2>
 

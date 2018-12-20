@@ -23,15 +23,32 @@ namespace inkling.Controllers
         [Route("ideaprofile/{id}")]
         public IActionResult IdeaProfile(int id)
         {
-
-
-            return View();
+            if(HttpContext.Session.GetString("Login")==null || HttpContext.Session.GetString("Login")!="True")
+            {
+                return Redirect("/");
+            }
+            int departId=(int)HttpContext.Session.GetInt32("departId");
+            int rank=(int)HttpContext.Session.GetInt32("rank");
+            ViewBag.approvers=dbContext.Users;
+            int userid=(int)HttpContext.Session.GetInt32("id");
+            ViewBag.id=userid;
+            ViewBag.creator=dbContext.Users.FirstOrDefault(u=>u.UserId==userid);
+            ViewBag.approvers=dbContext.Users.Where(a=>a.departId ==departId && a.Rank > rank);
+            Idea idea = dbContext.Ideas.FirstOrDefault(i=>i.IdeaId==id);
+            int cid=(int)idea.CreatorId;
+            var creator=dbContext.Users.FirstOrDefault(u=>u.UserId==cid);
+            ViewBag.creator=creator;
+            return View(idea);
         }
 
         [HttpGet]
         [Route("idea/form")]
         public IActionResult IdeaForm()
         {
+            if(HttpContext.Session.GetString("Login")==null || HttpContext.Session.GetString("Login")!="True")
+            {
+                return Redirect("/");
+            }
             int departId=(int)HttpContext.Session.GetInt32("departId");
             int rank=(int)HttpContext.Session.GetInt32("rank");
             ViewBag.approvers=dbContext.Users;
@@ -46,6 +63,10 @@ namespace inkling.Controllers
         [Route("idea/form/process")]
         public IActionResult IdeaFormProcess(Idea newIdea)
         {   
+            if(HttpContext.Session.GetString("Login")==null || HttpContext.Session.GetString("Login")!="True")
+            {
+                return Redirect("/");
+            }
             dbContext.Ideas.Add(newIdea);
             dbContext.SaveChanges();
             int id=newIdea.IdeaId;
@@ -56,6 +77,10 @@ namespace inkling.Controllers
         [Route("idea/{id}")]
         public IActionResult IdeaFormProcess(int id)
         {   
+            if(HttpContext.Session.GetString("Login")==null || HttpContext.Session.GetString("Login")!="True")
+            {
+                return Redirect("/");
+            }
             var anidea=dbContext.Ideas.FirstOrDefault(i=>i.IdeaId == id);
 
             return View(anidea);
@@ -69,6 +94,10 @@ namespace inkling.Controllers
         [Route("experiment/{id}")]
         public IActionResult Experiment(int id)
         {
+            if(HttpContext.Session.GetString("Login")==null || HttpContext.Session.GetString("Login")!="True")
+            {
+                return Redirect("/");
+            }
             var Experiment =dbContext.Experiment.FirstOrDefault( u => u.IdeaId == id);
             ViewBag.Experiment = Experiment;
             ViewBag.Id=id;
@@ -81,6 +110,10 @@ namespace inkling.Controllers
         [Route("addexperiment/{id}")]
         public IActionResult AddExperiment(Experiment ExperimentSubmission, int id)
         {
+            if(HttpContext.Session.GetString("Login")==null || HttpContext.Session.GetString("Login")!="True")
+            {
+                return Redirect("/");
+            }
             dbContext.Add(ExperimentSubmission);
             dbContext.SaveChanges();
 

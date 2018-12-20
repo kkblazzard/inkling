@@ -122,8 +122,11 @@ namespace inkling.Controllers
         [HttpPost]
         [Route("update")] //proccesses submitted updates to user profile
         public IActionResult Update(User update)
-        
         { 
+            if(HttpContext.Session.GetString("Login")==null || HttpContext.Session.GetString("Login")!="True")
+            {
+                return RedirectToAction("Index");
+            }
             int id=(int)HttpContext.Session.GetInt32("id");
             System.Console.WriteLine(id);
             update.UserId=id;
@@ -159,6 +162,10 @@ namespace inkling.Controllers
         [Route("logingIn")]
         public IActionResult logingIn()
         {
+            if(HttpContext.Session.GetString("Login")==null || HttpContext.Session.GetString("Login")!="True")
+            {
+                return RedirectToAction("Index");
+            }
             return View("LoginUser");
         }
     }

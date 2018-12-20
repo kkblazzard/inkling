@@ -25,10 +25,10 @@
     <h6>Approval Ladder:</h6>
 @{ var count=2;
     <ol type="1">
-        <ol>1. @ViewBag.creator.fname @ViewBag.creator.lname</ol>
+        <li>1. @ViewBag.creator.fname @ViewBag.creator.lname</li>
         @foreach(var a in ViewBag.approvers)
             {   
-                <ol>@count. @a.fname @a.lname</ol>
+                <li>@count. @a.fname @a.lname</li>
                 if(@a.Rank==0){
                 <input type="hidden" name="ApproverRank0" value="@a.UserId">
                 count=count+1;
