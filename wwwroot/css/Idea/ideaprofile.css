@@ -17,7 +17,8 @@ nav a{
     text-decoration: none;
 }
 .intro{
-    margin-left: 33%;
+    margin-left: 5%;
+    padding: 2%;
 
 }
 .left{
@@ -38,8 +39,11 @@ nav a{
 
 .ApprList{
     display: inline-block;
-    margin-left: 24%;
+    padding: 10px;
+    margin-left: 15%;
     vertical-align:top;
+    border: solid #080762 2px;
+    height: 300px;
 
 
 }
