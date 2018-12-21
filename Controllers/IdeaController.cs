@@ -29,22 +29,68 @@ namespace inkling.Controllers
             }
             int departId=(int)HttpContext.Session.GetInt32("departId");
             int rank=(int)HttpContext.Session.GetInt32("rank");
-            ViewBag.approvers=dbContext.Users;
             int userid=(int)HttpContext.Session.GetInt32("id");
             ViewBag.id=userid;
             ViewBag.creator=dbContext.Users.FirstOrDefault(u=>u.UserId==userid);
-            ViewBag.approvers=dbContext.Users.Where(a=>a.departId ==departId && a.Rank > rank);
+            ViewBag.approvers=dbContext.Users.Where(a=>a.departId ==departId && a.Rank < rank).OrderByDescending(r=> r.Rank).ToList();
 
             ViewBag.messages= dbContext.Message
             .Include(I => I.Creator)
             .Where(F => F.IdeaId == id).OrderByDescending(c=> c.created_at).ToList();
-
-
             ViewBag.Idea = dbContext.Ideas.FirstOrDefault(i=>i.IdeaId==id);
             int cid=(int)ViewBag.Idea.CreatorId;
             var creator=dbContext.Users.FirstOrDefault(u=>u.UserId==cid);
             ViewBag.creator=creator;
             return View();
+        }
+        /////////////////////////////////////////////////////// POST Idea Approval Process///////////////////////
+
+        [HttpPost]
+        [Route("idea/{id}/approvalprocess")]
+        public IActionResult IdeaApproval( string AR, int id)
+        {
+            System.Console.WriteLine("************************************** Enters Function ***********************");
+            if(HttpContext.Session.GetString("Login")==null || HttpContext.Session.GetString("Login")!="True")
+                {
+                    return Redirect("/");
+                }
+            int departId=(int)HttpContext.Session.GetInt32("departId");
+            int rank=(int)HttpContext.Session.GetInt32("rank");
+            User newapprover=dbContext.Users.FirstOrDefault(a=>a.departId ==departId && a.Rank <= rank-1);
+            Idea Idea = dbContext.Ideas.FirstOrDefault(i=>i.IdeaId==id);
+            int caseSwitch = rank;
+            switch (caseSwitch)
+            {
+                case 0:
+                    Idea.zeroAD=AR;
+                    break;
+                case 1:
+                    Idea.oneAD=AR;
+                    Idea.ApproverId=newapprover.UserId;
+                    break;
+                case 2:
+                    Idea.twoAD=AR;
+                    Idea.ApproverId=newapprover.UserId;
+                    break;
+                case 3:
+                    Idea.threeAD=AR;
+                    Idea.ApproverId=newapprover.UserId;
+                    break;
+                case 4:
+                    Idea.fourAD=AR;
+                    Idea.ApproverId=newapprover.UserId;
+                    break;
+                case 5:
+                    Idea.fiveAD=AR;
+                    Idea.ApproverId=newapprover.UserId;
+                    break;
+                default:
+                    break;
+            }
+            dbContext.Update(Idea);
+            dbContext.SaveChanges();
+            return Redirect($"/ideaprofile/{id}");
+
         }
 /////////////////////////////////////////////////////// POST PROFILE PAGE MESSAGE BOARD ///////////////////////
 
@@ -58,7 +104,7 @@ namespace inkling.Controllers
                 return Redirect($"/ideaprofile/{id}");
             }
 
-///////////////////////////////////////////////////////  ///////////////////////
+///////////////////////////////////////////////////////Form for new Idea Submision  ///////////////////////
 
         [HttpGet]
         [Route("idea/form")]
@@ -74,10 +120,12 @@ namespace inkling.Controllers
             int id=(int)HttpContext.Session.GetInt32("id");
             ViewBag.id=id;
             ViewBag.creator=dbContext.Users.FirstOrDefault(u=>u.UserId==id);
-            ViewBag.approvers=dbContext.Users.Where(a=>a.departId ==departId && a.Rank > rank);
+            ViewBag.approvers=dbContext.Users.Where(a=>a.departId ==departId && a.Rank < rank).OrderByDescending(r=> r.Rank);
 
             return View("newidea");
         }
+                /////////////////////////////////////////////////////// Proccess New Idea Form ///////////////////////
+
         [HttpPost]
         [Route("idea/form/process")]
         public IActionResult IdeaFormProcess(Idea newIdea)
@@ -147,6 +195,6 @@ namespace inkling.Controllers
             return Redirect($"/Experiment/{id}");
 
         }
-
+        
     }
 }
