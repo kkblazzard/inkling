@@ -1,6 +1,6 @@
-
+@model Approvals
 <form action="/idea/@ViewBag.Idea.IdeaId/approvalprocess"  method="post">
-    <select name="approval ">
+    <select asp-for="AR">
 
         <option value="Completed">Research Completed</option>
         <option value="Rejected">Rejected Idea</option>

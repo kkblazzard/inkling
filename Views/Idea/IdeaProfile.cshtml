@@ -20,7 +20,16 @@
     </div>
     <div class="left">
         <br>
+        @if(ViewBag.id==@ViewBag.Idea.ApproverId 
+        || ViewBag.id==@ViewBag.Idea.ApproverRank0 
+        ||ViewBag.id==@ViewBag.Idea.ApproverRank1
+        ||ViewBag.id==@ViewBag.Idea.ApproverRank2
+        ||ViewBag.id==@ViewBag.Idea.ApproverRank3
+        ||ViewBag.id==@ViewBag.Idea.ApproverRank4
+        ||ViewBag.id==@ViewBag.Idea.ApproverRank5)
+            {
         <h5><a href="/Experiment/@ViewBag.Idea.IdeaId">Experiment-Driven Design Page</a></h5>
+            }
         <br>
         <h4>Description</h4>
         <div class= "DescBox" >
@@ -38,40 +47,62 @@
 
         @{
             <ol type="1">
-                <li>@ViewBag.creator.fname @ViewBag.creator.lname
-                    
+                <li>@ViewBag.creator.fname @ViewBag.creator.lname:
+                    @if(@ViewBag.creator.Rank ==0 && @ViewBag.Idea.zeroAD !=null)
+                { 
                     @ViewBag.Idea.zeroAD
+                }
+                @if(@ViewBag.creator.Rank ==1 && @ViewBag.Idea.oneAD !=null)
+                { 
+                    @ViewBag.Idea.oneAD
+                }
+                @if(@ViewBag.creator.Rank ==2 && @ViewBag.Idea.twoAD !=null)
+                { 
+                    @ViewBag.Idea.twoAD
+                }
+                @if(@ViewBag.creator.Rank ==3 && @ViewBag.Idea.threeAD !=null)
+                { 
+                    @ViewBag.Idea.threeAD
+                }
+                @if(@ViewBag.creator.Rank ==4 && @ViewBag.Idea.fourAD !=null)
+                { 
+                    @ViewBag.Idea.fourAD
+                }
+                @if(@ViewBag.creator.Rank ==5 && @ViewBag.Idea.fiveAD !=null)
+                { 
+                    @ViewBag.Idea.fiveAD
+                }
                 </li>
                 @foreach(var a in ViewBag.approvers)
                     {   
-                        <li>@a.fname @a.lname
+                        <li>@a.fname @a.lname: 
                 @if(@a.Rank ==0 && @ViewBag.Idea.zeroAD !=null)
                 { 
                     @ViewBag.Idea.zeroAD
                 }
                 @if(@a.Rank ==1 && @ViewBag.Idea.oneAD !=null)
                 { 
-                    @ViewBag.Idea.zeroAD
+                    @ViewBag.Idea.oneAD
                 }
                 @if(@a.Rank ==2 && @ViewBag.Idea.twoAD !=null)
                 { 
-                    @ViewBag.Idea.zeroAD
+                    @ViewBag.Idea.twoAD
                 }
                 @if(@a.Rank ==3 && @ViewBag.Idea.threeAD !=null)
                 { 
-                    @ViewBag.Idea.zeroAD
+                    @ViewBag.Idea.threeAD
                 }
                 @if(@a.Rank ==4 && @ViewBag.Idea.fourAD !=null)
                 { 
-                    @ViewBag.Idea.zeroAD
+                    @ViewBag.Idea.fourAD
                 }
                 @if(@a.Rank ==5 && @ViewBag.Idea.fiveAD !=null)
                 { 
-                    @ViewBag.Idea.zeroAD
+                    @ViewBag.Idea.fiveAD
                 }
-                        </li>
+                </li>
 
-                    }
+                }
             </ol>
         }
     </div>

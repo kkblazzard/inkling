@@ -27,20 +27,23 @@ namespace inkling.Controllers
             {
                 return Redirect("/");
             }
-            int departId=(int)HttpContext.Session.GetInt32("departId");
-            int rank=(int)HttpContext.Session.GetInt32("rank");
+            
             int userid=(int)HttpContext.Session.GetInt32("id");
             ViewBag.id=userid;
-            ViewBag.creator=dbContext.Users.FirstOrDefault(u=>u.UserId==userid);
-            ViewBag.approvers=dbContext.Users.Where(a=>a.departId ==departId && a.Rank < rank).OrderByDescending(r=> r.Rank).ToList();
-
+            Idea Idea = dbContext.Ideas.FirstOrDefault(i=>i.IdeaId==id);
+            ViewBag.Idea=Idea;
+            User creator=dbContext.Users.FirstOrDefault(u=>u.UserId==Idea.CreatorId);
+            System.Console.WriteLine(creator.Rank);
+            System.Console.WriteLine("=++++++++++++++creator Rank+++++++++++++++");
+            ViewBag.creator=creator;
+            List<User> approvers=dbContext.Users.Where(a=>a.departId ==creator.departId && a.Rank < creator.Rank).OrderByDescending(r=> r.Rank).ToList();
+            ViewBag.approvers=approvers;
+            foreach(var a in approvers){
+                System.Console.WriteLine(a.fname);
+            }
             ViewBag.messages= dbContext.Message
             .Include(I => I.Creator)
             .Where(F => F.IdeaId == id).OrderByDescending(c=> c.created_at).ToList();
-            ViewBag.Idea = dbContext.Ideas.FirstOrDefault(i=>i.IdeaId==id);
-            int cid=(int)ViewBag.Idea.CreatorId;
-            var creator=dbContext.Users.FirstOrDefault(u=>u.UserId==cid);
-            ViewBag.creator=creator;
             return View();
         }
         /////////////////////////////////////////////////////// POST Idea Approval Process///////////////////////
@@ -49,44 +52,63 @@ namespace inkling.Controllers
         [Route("idea/{id}/approvalprocess")]
         public IActionResult IdeaApproval( string AR, int id)
         {
-            System.Console.WriteLine("************************************** Enters Function ***********************");
+            System.Console.WriteLine("************************************** Idea approval Function ***********************");
             if(HttpContext.Session.GetString("Login")==null || HttpContext.Session.GetString("Login")!="True")
                 {
                     return Redirect("/");
                 }
             int departId=(int)HttpContext.Session.GetInt32("departId");
             int rank=(int)HttpContext.Session.GetInt32("rank");
-            User newapprover=dbContext.Users.FirstOrDefault(a=>a.departId ==departId && a.Rank <= rank-1);
+            System.Console.WriteLine(AR);
+            System.Console.WriteLine("+++++++++++++++++++++++AR String above++++++++++++");
+            User newapprover=dbContext.Users.FirstOrDefault(a=>a.departId ==departId && a.Rank == rank-1);
             Idea Idea = dbContext.Ideas.FirstOrDefault(i=>i.IdeaId==id);
+            System.Console.WriteLine(rank);
+            System.Console.WriteLine("IdeaApproval proccess Rank+++++++++++++++");
             int caseSwitch = rank;
             switch (caseSwitch)
             {
                 case 0:
                     Idea.zeroAD=AR;
+                    System.Console.WriteLine(Idea.zeroAD);
+                    System.Console.WriteLine("++++++++++++++Idea ZeroAD Above+++++");
                     break;
                 case 1:
                     Idea.oneAD=AR;
                     Idea.ApproverId=newapprover.UserId;
+                    System.Console.WriteLine(Idea.zeroAD);
+                    System.Console.WriteLine("++++++++++++++Idea oneAD Above+++++");
                     break;
                 case 2:
                     Idea.twoAD=AR;
                     Idea.ApproverId=newapprover.UserId;
+                    System.Console.WriteLine(Idea.zeroAD);
+                    System.Console.WriteLine("++++++++++++++Idea twoAD Above+++++");
                     break;
                 case 3:
                     Idea.threeAD=AR;
                     Idea.ApproverId=newapprover.UserId;
+                    System.Console.WriteLine(Idea.zeroAD);
+                    System.Console.WriteLine("++++++++++++++Idea threeAD Above+++++");
                     break;
                 case 4:
                     Idea.fourAD=AR;
                     Idea.ApproverId=newapprover.UserId;
+                    System.Console.WriteLine(Idea.zeroAD);
+                    System.Console.WriteLine("++++++++++++++Idea fourAD Above+++++");
                     break;
                 case 5:
                     Idea.fiveAD=AR;
                     Idea.ApproverId=newapprover.UserId;
+                    System.Console.WriteLine(Idea.zeroAD);
+                    System.Console.WriteLine("++++++++++++++Idea fiveAD Above+++++");
                     break;
                 default:
+                    System.Console.WriteLine("+++++++++++++this is working as default");
+                    
                     break;
             }
+        
             dbContext.Update(Idea);
             dbContext.SaveChanges();
             return Redirect($"/ideaprofile/{id}");
