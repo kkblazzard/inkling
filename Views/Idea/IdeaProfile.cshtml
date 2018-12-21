@@ -31,13 +31,46 @@
     </div>
     <div class="ApprList">
         <h4>List of approvals</h4>
-        <partial name="ApprovalPartial"/>
+        @if(ViewBag.id==@ViewBag.Idea.ApproverId)
+            {
+                <partial name="ApprovalPartial"/>
+            }
+
         @{
             <ol type="1">
-                <li>@ViewBag.creator.fname @ViewBag.creator.lname</li>
+                <li>@ViewBag.creator.fname @ViewBag.creator.lname
+                    
+                    @ViewBag.Idea.zeroAD
+                </li>
                 @foreach(var a in ViewBag.approvers)
                     {   
-                        <li>@a.fname @a.lname </li>
+                        <li>@a.fname @a.lname
+                @if(@a.Rank ==0 && @ViewBag.Idea.zeroAD !=null)
+                { 
+                    @ViewBag.Idea.zeroAD
+                }
+                @if(@a.Rank ==1 && @ViewBag.Idea.oneAD !=null)
+                { 
+                    @ViewBag.Idea.zeroAD
+                }
+                @if(@a.Rank ==2 && @ViewBag.Idea.twoAD !=null)
+                { 
+                    @ViewBag.Idea.zeroAD
+                }
+                @if(@a.Rank ==3 && @ViewBag.Idea.threeAD !=null)
+                { 
+                    @ViewBag.Idea.zeroAD
+                }
+                @if(@a.Rank ==4 && @ViewBag.Idea.fourAD !=null)
+                { 
+                    @ViewBag.Idea.zeroAD
+                }
+                @if(@a.Rank ==5 && @ViewBag.Idea.fiveAD !=null)
+                { 
+                    @ViewBag.Idea.zeroAD
+                }
+                        </li>
+
                     }
             </ol>
         }

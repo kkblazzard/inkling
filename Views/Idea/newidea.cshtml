@@ -28,30 +28,30 @@
         <li>@ViewBag.creator.fname @ViewBag.creator.lname</li>
         @foreach(var a in ViewBag.approvers)
             {   
-                <li>@count. @a.fname @a.lname</li>
-                if(@a.Rank==0){
+                <li> @a.fname @a.lname</li>
+                @if(@a.Rank==0){
                 <input type="hidden" name="ApproverRank0" value="@a.UserId">
-                count=count+1;
+                
                 }
-                if(@a.Rank==1){
+                @if(@a.Rank==1){
                 <input type="hidden" name="ApproverRank1" value="@a.UserId">
-                count=count+1;
+                
                 }
-                if(@a.Rank==2){
+                @if(@a.Rank==2){
                 <input type="hidden" name="ApproverRank2" value="@a.UserId">
-                count=count+1;
+                
                 }
-                if(@a.Rank==3){
+                @if(@a.Rank==3){
                 <input type="hidden" name="ApproverRank3" value="@a.UserId">
-                count=count+1;
+                
                 }
-                if(@a.Rank==4){
+                @if(@a.Rank==4){
                 <input type="hidden" name="ApproverRank4" value="@a.UserId">
-                count=count+1;
+                
                 }
-                if(@a.Rank==5){
+                @if(@a.Rank==5){
                 <input type="hidden" name="ApproverRank4" value="@a.UserId">
-                count=count+1;
+                
                 }
             }
     </ol>
