@@ -13,15 +13,21 @@ nav a{
     text-decoration: none;
 }
 
-.desc{
-    height:100%;
-    width:100%;
-    text-overflow: auto;
-}
 .inline{
     display:inline-block;
+    width: 55%
+}
+
+.inline textarea{
+    display:inline-block;
+    width: 80%;
+    height: 100px;
 }
 .approveList{
     display:inline-block;
-    margin-left:50%;
+    margin-left:75%;
+    margin-top: -55%;
+    vertical-align: top;
+    text-align: left;
+}
 }

@@ -14,58 +14,72 @@
         <a href="/idea/all">All Ideas |</a>
         <a href="/Logout">Logout</a>
     </nav>
-<div>
-<h2>Idea Submission</h2>
-<div class="inline">
-<form action="/idea/form/process"  method="post">
-<label asp-for="name"></label>
-<input asp-for="name">
-</div>
-<div class="approveList">
-    <h6>Approval Ladder:</h6>
-@{ var count=2;
-    <ol type="1">
-        <li>@ViewBag.creator.fname @ViewBag.creator.lname</li>
-        @foreach(var a in ViewBag.approvers)
-            {   
-                <li> @a.fname @a.lname</li>
-                @if(@a.Rank==0){
-                <input type="hidden" name="ApproverRank0" value="@a.UserId">
-                
-                }
-                @if(@a.Rank==1){
-                <input type="hidden" name="ApproverRank1" value="@a.UserId">
-                
-                }
-                @if(@a.Rank==2){
-                <input type="hidden" name="ApproverRank2" value="@a.UserId">
-                
-                }
-                @if(@a.Rank==3){
-                <input type="hidden" name="ApproverRank3" value="@a.UserId">
-                
-                }
-                @if(@a.Rank==4){
-                <input type="hidden" name="ApproverRank4" value="@a.UserId">
-                
-                }
-                @if(@a.Rank==5){
-                <input type="hidden" name="ApproverRank4" value="@a.UserId">
-                
-                }
-            }
-    </ol>
-}
-</div>
-<label asp-for="desc"></label>
-<h6>"What problem will this solve</h6>
-<h6>Who will use this Customers or Employees?</h6>
-<textarea class="desc" asp-for="desc"></textarea>
+
+
+    <h2>Idea Submission</h2>
+    <div class="inline">
+    <h4>What problem will your idea solve?</h4>
+    Try to make your idea clear and to the point. The list to the left will
+    be approving your idea. They will be able to leave a message on the "Idea Profile Page"
+    <br>Tips:<br>
+    -Who will use this Customers or Employees?<br>
+    -What will your experiments look like?<br>
+    -Be open to discusson and criticism, with will help you get your idea approved.
+    <br>
+    <br>
+
+    <form action="/idea/form/process"  method="post">
+    <label asp-for="name"></label>
+    <input asp-for="name">
+    <label asp-for="desc"></label>
+
+    
+ 
+<textarea asp-for="desc"></textarea>
 <input type="hidden" asp-for="CreatorId"value="@ViewBag.id">
 <input type="hidden" asp-for="ApproverId"value="@ViewBag.id">
 <br>
 <input type="submit" value ="Create">
 </form>
+</div>
+
+
+
+<div class="approveList">
+        <h5>Approval Ladder:</h5>
+    @{ var count=2;
+        <ol type="1">
+            <li>@ViewBag.creator.fname @ViewBag.creator.lname</li>
+            @foreach(var a in ViewBag.approvers)
+                {   
+                    <li> @a.fname @a.lname</li>
+                    @if(@a.Rank==0){
+                    <input type="hidden" name="ApproverRank0" value="@a.UserId">
+                    
+                    }
+                    @if(@a.Rank==1){
+                    <input type="hidden" name="ApproverRank1" value="@a.UserId">
+                    
+                    }
+                    @if(@a.Rank==2){
+                    <input type="hidden" name="ApproverRank2" value="@a.UserId">
+                    
+                    }
+                    @if(@a.Rank==3){
+                    <input type="hidden" name="ApproverRank3" value="@a.UserId">
+                    
+                    }
+                    @if(@a.Rank==4){
+                    <input type="hidden" name="ApproverRank4" value="@a.UserId">
+                    
+                    }
+                    @if(@a.Rank==5){
+                    <input type="hidden" name="ApproverRank4" value="@a.UserId">
+                    
+                    }
+                }
+        </ol>
+    }
 </div>
 
     
