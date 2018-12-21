@@ -15,8 +15,9 @@
 <div class="background">
 @foreach(var i in Model){
     <div class="ideas">
-    <h5>@i.IdeaId: @i.name</h5>
+    <h5>@i.IdeaId:  <a href="/ideaprofile/@i.IdeaId">@i.name</a></h5>
     <p>@i.desc</p>
+    
     </div>
 }
 </div>
