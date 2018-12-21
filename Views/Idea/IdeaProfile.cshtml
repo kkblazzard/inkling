@@ -31,40 +31,25 @@
     </div>
     <div class="ApprList">
         <h4>List of approvals</h4>
+        <partial name="ApprovalPartial"/>
         @{
             <ol type="1">
                 <li>@ViewBag.creator.fname @ViewBag.creator.lname</li>
                 @foreach(var a in ViewBag.approvers)
                     {   
                         <li>@a.fname @a.lname </li>
-                            <form action="@a.lname"  method="post">
-                                <select name="approval ">
-                                    <option value="volvo">Volvo</option>
-                                    <option value="saab">Saab</option>
-                                    <option value="fiat">Fiat</option>
-                                    <option value="audi">Audi</option>
-                                </select>
-                                <button>ok</button>
-                            </form>
                     }
-
-
             </ol>
         }
     </div>
-
-            <partial name="ApprovalPartial"/>
-
-
-
-    </div>
+</div>
     <div class="MessageBox">
         <div class="message">
             <ul>
             @{
                 @foreach(var m in @ViewBag.messages){
-               <li>@m.Creator.fname @m.Creator.lname @m.created_at.ToString("MM/dd/yyyy")</li> 
-               <li style="list-style-type: none;" > @m.message </li>
+                <li>@m.Creator.fname @m.Creator.lname @m.created_at.ToString("MM/dd/yyyy")</li> 
+                <li style="list-style-type: none;" > @m.message </li>
             }
             }
             </ul>

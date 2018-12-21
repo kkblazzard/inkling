@@ -33,7 +33,7 @@ namespace inkling.Controllers
             int userid=(int)HttpContext.Session.GetInt32("id");
             ViewBag.id=userid;
             ViewBag.creator=dbContext.Users.FirstOrDefault(u=>u.UserId==userid);
-            ViewBag.approvers=dbContext.Users.Where(a=>a.departId ==departId && a.Rank > rank);
+            ViewBag.approvers=dbContext.Users.Where(a=>a.departId ==departId && a.Rank < rank).ToList();
 
             ViewBag.messages= dbContext.Message
             .Include(I => I.Creator)
