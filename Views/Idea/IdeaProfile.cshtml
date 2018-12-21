@@ -19,6 +19,10 @@
         <h5>Creator: @ViewBag.creator.fname @ViewBag.creator.lname</h5>
     </div>
     <div class="left">
+        <h4>Description</h4>
+        <div class= "DescBox" >
+            @ViewBag.Idea.desc
+        </div>
         <br>
         @if(ViewBag.id==@ViewBag.Idea.ApproverId 
         || ViewBag.id==@ViewBag.Idea.ApproverRank0 
@@ -26,15 +30,14 @@
         ||ViewBag.id==@ViewBag.Idea.ApproverRank2
         ||ViewBag.id==@ViewBag.Idea.ApproverRank3
         ||ViewBag.id==@ViewBag.Idea.ApproverRank4
-        ||ViewBag.id==@ViewBag.Idea.ApproverRank5)
+        ||ViewBag.id==@ViewBag.Idea.ApproverRank5
+        ||ViewBag.id==@ViewBag.creator.UserId)
             {
         <h5><a href="/Experiment/@ViewBag.Idea.IdeaId">Experiment-Driven Design Page</a></h5>
+        <h5><a href="/idea/@ViewBag.Idea.IdeaId/Pod">Build a Pod</a></h5>
             }
         <br>
-        <h4>Description</h4>
-        <div class= "DescBox" >
-            @ViewBag.Idea.desc
-        </div>
+        
  
 
     </div>

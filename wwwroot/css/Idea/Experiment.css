@@ -15,6 +15,7 @@ nav a{
     display: inline-block;
     width: 50%;
     vertical-align: top;
+    margin-top:4%;
 }
 
 .EddPic{
@@ -26,8 +27,8 @@ nav a{
     vertical-align: top;
 }
 
-textarea{
-    width: 50%;
+.textarea{
+    width: 100%;
 
 }
 table{
@@ -36,4 +37,14 @@ table{
     border-collapse: separate;
     border-spacing: 2px;
     border-color: gray;
+}
+.form{
+    display:inline-block;
+    width:35%;
+}
+.downloads{
+    display:inline-block;
+    vertical-align:top;
+    margin-left:31%;
+    margin-top:2%;
 }

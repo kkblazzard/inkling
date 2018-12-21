@@ -217,6 +217,18 @@ namespace inkling.Controllers
             return Redirect($"/Experiment/{id}");
 
         }
-        
+        /////////////////////////////////////////////////////// Build a Pod ///////////////////////
+        [HttpGet]
+        [Route("idea/{id}/Pod")]
+        public IActionResult AddPod(int id)
+        {
+            System.Console.WriteLine("************************************** Enters Function ***********************");
+            if(HttpContext.Session.GetString("Login")==null || HttpContext.Session.GetString("Login")!="True")
+                {
+                    return Redirect("/");
+                }
+
+            return View("addPod");
+        }
     }
 }
