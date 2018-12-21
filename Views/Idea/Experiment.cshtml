@@ -39,17 +39,17 @@
     </div>
     <br>
     <h3>Submit an Experiment</h3>
-    <form action="/AddExperiment/@ViewBag.id"  method="post">
+    <form class="form" action="/AddExperiment/@ViewBag.id"  method="post">
         <br>
         <input type="hidden" asp-for="IdeaId" value=@ViewBag.id>
 
     <span asp-validation-for="ExperimentDesc"></span>
         <label asp-for="ExperimentDesc"></label>
-        <textarea asp-for="ExperimentDesc"></textarea>
+        <textarea class="textarea" asp-for="ExperimentDesc"></textarea>
 
         <span asp-validation-for="Result"></span>
         <label asp-for="Result"></label>
-        <input asp-for="Result">
+        <input class="textarea"asp-for="Result">
 
         <span asp-validation-for="Score"></span>
         <label asp-for="Score"></label>
@@ -58,6 +58,14 @@
         <button>Submit</button>
 
     </form>
+    <div class="downloads">
+        <h5>Downloadable Templates:</h5>
+        <a href="EDD_Prod_Desc.docx" download="Product Description Template"> Download a Product Description Template</a>
+        <br>
+        <a href="EDD_ROI_Template" download ="ROI Template">Download ROI Template</a>
+        <br>
+        <a href="EDD_Roadmap_Template" download ="Roadmap Template">Download Roadmap Template</a>
+    </div>
 
    <h3>Completed Experiments</h3>
 @if(ViewBag.Experiment != null){
@@ -72,7 +80,7 @@
         {
     <tr>
         <td>@e.ExperimentDesc</td>
-        <td>@e.Result</td>
+        <td><a href="@e.Result" target="_blank">Experiment Result</a></td>
         <td>@e.Score</td>
     </tr>
         }
