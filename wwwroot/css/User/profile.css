@@ -21,7 +21,7 @@ nav a{
     display:inline-block;
 }
 .right{
-    margin-left:30%;
+    margin-left:36%;
     display:inline-block;
 }
 .scrollbox{
@@ -31,10 +31,36 @@ nav a{
     font:16px/26px Georgia, Garamond, Serif;overflow:auto;
     display:inline-block;
 }
-.new{
-    margin-left:32%;
+
+.GirlNotes img{
+    width:50%;
+    margin-left: 25%;
 }
 
-.MessyDesk img{
-    width:50%;
-}
+.tooltip {
+    margin-left:35%;
+    display: inline-block;
+
+  }
+  
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 230px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    bottom: 50%;
+    margin-left: -13%;
+    left: 50%; 
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+  }
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
