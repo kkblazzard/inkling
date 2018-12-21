@@ -1,7 +1,8 @@
 <head>
-    <title>Edit User</title>
-
+    <title>User Dashboard</title>
+    <script type="text/javascript" src="../../wwwroot/js/site.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="~/css/User/profile.css"/>
+
 </head>
 <header>
     <div class= "header">
@@ -30,10 +31,12 @@
     <div class="right">
         <h4>Ideas needing approval</h4>
         <div class="scrollbox">
+            
             @foreach(var review in ViewBag.review)
             {
                 <a href="ideaprofile/@review.IdeaId">@review.name</a>
                 <br>
+                
             }
         </div>
     </div>
