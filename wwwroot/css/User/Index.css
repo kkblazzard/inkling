@@ -39,7 +39,7 @@ nav a{
 }
 
 .desc{
-    display: inline-block;
+
     vertical-align: top;
     margin-top:20%;
     margin-left:5%;
@@ -48,11 +48,22 @@ nav a{
 .Group{
     display: inline-block;
     vertical-align: top;
-    width: 50%;
+    width: 56%;
     margin-left: 45%;
-    margin-top: -96%;
+    margin-top: -108%;
 }
-.img2{
-    height:500px;
-    width:500px;
+.Group img{
+    width: 28%;
+    margin-left: 44%;
+
+}
+.Group span{
+    font-weight: bold;
+}
+.Indexpic img{
+    display: inline-block;
+    vertical-align: top;
+    width: 56%;
+    margin-left: 45%;
+    margin-top: -74%;
 }
